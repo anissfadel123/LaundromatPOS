@@ -8,5 +8,4 @@
     [Email] NVARCHAR(70) NULL, 
     [CreatedDate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
     [Points] INT NULL DEFAULT 0,
-
 )
