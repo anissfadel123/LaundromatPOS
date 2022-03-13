@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="637da335-0945-4cd1-9771-36c90fa10afe" ChangeDateTime="03/13/2022 00:02:26">
+    <Property Name="ElementName" Value="[dbo].[Products].[ProductName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Products]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="37b4bbdd-a8d7-4f3f-a1ea-cd0f58a39860" ChangeDateTime="03/13/2022 00:05:29">
+    <Property Name="ElementName" Value="[dbo].[Products].[Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Products]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4330975c-0c6c-4188-8c59-078682b1127b" ChangeDateTime="03/13/2022 00:40:18">
+    <Property Name="ElementName" Value="[dbo].[ServiceTypes].[ServiceType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ServiceTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ServiceDescription" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f041a870-e492-4c60-bcac-c40eb096c7fb" ChangeDateTime="03/13/2022 00:42:44">
+    <Property Name="ElementName" Value="[dbo].[ServiceTypes].[Price]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ServiceTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PricePerPound" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="01858b59-c4e3-43c4-aea5-5df5cb2ddf72" ChangeDateTime="03/13/2022 00:43:12">
+    <Property Name="ElementName" Value="[dbo].[ServiceTypes].[ChargedPerPound]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ServiceTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinimunPrice" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="64a42a70-485a-485d-9e65-c84946f5388d" ChangeDateTime="03/13/2022 00:55:40">
+    <Property Name="ElementName" Value="[dbo].[Wdf].[ServiceDescription]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Wdf]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ServiceDescriptionId" />
+  </Operation>
+</Operations>
