@@ -21,13 +21,11 @@ namespace LaundroAPI.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AuthenticateController(UserManager<ApplicationUser> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _configuration = configuration;
-            _roleManager = roleManager;
         }
 
         [HttpPost]
