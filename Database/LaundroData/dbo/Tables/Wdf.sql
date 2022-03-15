@@ -10,5 +10,7 @@
     [Status] TINYINT NOT NULL, 
     [PickedUp] BIT NOT NULL, 
     [WashMachine] NVARCHAR(MAX) NULL, 
-    [DryMachine] NVARCHAR(MAX) NULL
+    [DryMachine] NVARCHAR(MAX) NULL, 
+    CONSTRAINT [FK_Wdf_ToCustomers] FOREIGN KEY ([CustomerId]) REFERENCES [Customers]([Id]), 
+    CONSTRAINT [FK_Wdf_ToWdfServiceType] FOREIGN KEY ([ServiceId]) REFERENCES [WdfServiceType]([Id])
 )
