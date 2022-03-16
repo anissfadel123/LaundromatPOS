@@ -69,8 +69,21 @@
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\Wdf.sql" />
     <Build Include="dbo\Tables\WdfServiceType.sql" />
+    <Build Include="dbo\Stored Procedures\spCustomers_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\spCustomers_GetCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\spCustomers_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spCustomers_DeleteCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\spCustomers_UpdateCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\spProducts_GetProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spProducts_DeleteProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spProducts_UpdateProduct.sql" />
+    <Build Include="dbo\Stored Procedures\spProducts_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\spProducts_GetAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="LaundroData.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishLocations\LaundroData.publish.xml" />
   </ItemGroup>
 </Project>
