@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LaundroDesktopUI.CustomControls">
+    
+    
+    <Style TargetType="local:ProductButton">
+        <Setter Property="Width" Value="123" />
+        <Setter Property="Height" Value="164" />
+        <Setter Property="Margin" Value="0 12 12 0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ProductButton">
+                    <Border x:Name="border" 
+                            BorderBrush="#707070"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Background="White"
+                            Cursor="Hand">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="43" />
+                                <RowDefinition Height="88"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock  
+                                       Text="{TemplateBinding ProductName}"
+                                       TextAlignment="Center"
+                                       Foreground="#707070"
+                                       FontWeight="SemiBold"
+                                       FontSize="14"/>
+                            <Image Grid.Row="1" Source="/Assets/Images/test.jpg" />
+                            <TextBlock Grid.Row="2"
+                                       Text="{TemplateBinding Price}"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       Foreground="#707070"
+                                       FontWeight="SemiBold"
+                                       FontSize="14"
+                                       FontStyle="Italic"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" 
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="#D8F3FC" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:Modal">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="modalTemplate" TargetType="{x:Type local:Modal}">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    </ControlTemplate.Resources>
+                    <Grid Visibility="{TemplateBinding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid  Background="Black"
+                               Opacity="0.85">
+                            <!--<Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <Trigger 
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>-->
+
+                        </Grid>
+
+                        <Border HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Height="{TemplateBinding ModalHeight}"
+                                Width="{TemplateBinding ModalWidth}">
+                            <Grid>
+                                <Border x:Name="border" CornerRadius="7" Background="White" />
+                                
+
+                                <ContentControl Content="{TemplateBinding Content}"  Margin="0 0 0 20"/>
+                            </Grid>
+                            
+
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

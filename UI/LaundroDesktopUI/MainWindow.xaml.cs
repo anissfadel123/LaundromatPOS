@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaundroDesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,24 @@ namespace LaundroDesktopUI
             {
                 WindowState = WindowState.Maximized;
             }
+        }
+
+
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            PaymentModel.IsOpen = false;
+        }
+
+
+        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            registerCustomerView.RegisterModal.IsOpen = true;
+        }
+
+        private void CashBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentModel.IsOpen = false;
+            cashInputView.cashInputModal.IsOpen = true;
         }
     }
 }

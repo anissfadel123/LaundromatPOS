@@ -3,8 +3,21 @@
     
     <BitmapImage x:Key="Plus" 
                  UriSource="Assets/Images/plus.png" />
-    
+
     <BitmapImage x:Key="MenuBurger" 
                  UriSource="Assets/Images/menuBurger.png" />
+
+    <BitmapImage x:Key="Bin"
+                 UriSource="Assets/Images/bin.png" />    
+    <BitmapImage x:Key="Edit"
+                 UriSource="Assets/Images/edit.png" />
+
+    <BitmapImage x:Key="CashApp" 
+                 UriSource="Assets/Images/cashapp.png" />
+    <BitmapImage x:Key="CreditCard"
+                 UriSource="Assets/Images/credit-card.png" />
+    <BitmapImage x:Key="Close"
+                 UriSource="Assets/Images/close.png" />
+
 
 </ResourceDictionary>

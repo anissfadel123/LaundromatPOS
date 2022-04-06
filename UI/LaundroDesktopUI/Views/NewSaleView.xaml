@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LaundroDesktopUI.Views"
+             xmlns:vms="clr-namespace:LaundroDesktopUI.ViewModels" 
+             xmlns:custom="clr-namespace:LaundroDesktopUI.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="1010" 
              d:DesignWidth="1920"
@@ -22,9 +24,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
-        
+
+
+
         <Style x:Key="shadow_card_border"  
                TargetType="Border">
             <Setter Property="Width" Value="170" />
@@ -34,7 +36,7 @@
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="CornerRadius" Value="6" />
             <Setter Property="HorizontalAlignment" Value="Right" />
-            
+
 
         </Style>
 
@@ -107,18 +109,46 @@
             </Setter>
         </Style>
 
+        <Style x:Key="ProductBtn" TargetType="Button">
+
+        </Style>
+
+        <Style x:Key="ProductListBox"
+               TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Width="128"
+                                Height="164"
+                                BorderThickness="1"
+                                BorderBrush="#707070"
+                                CornerRadius="6">
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     <Grid>
+        <Grid.Resources>
+            <!--<DataTemplate DataType="{x:Type vms:NewSaleViewModel}">
+                <local:NewSaleView />
+            </DataTemplate>-->
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="745*"/>
+            <ColumnDefinition Width="82*"/>
+            <ColumnDefinition Width="663*"/>
             <ColumnDefinition Width="1175*"/>
         </Grid.ColumnDefinitions>
-        <Border Margin="24 24 0 24"
-                HorizontalAlignment="Stretch"
+
+
+        <Border Margin="24,24,0,24"
                 BorderBrush="#707070"
                 BorderThickness="1"
                 Background="#F2F2F2"
-                Padding="12">
+                Padding="12" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -126,9 +156,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    
+
                 </Grid.RowDefinitions>
-                
+
                 <Grid Grid.Row="0 " Height="46"
                             VerticalAlignment="Top"
                             Margin="0 0 0 12"
@@ -178,80 +208,11 @@
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
                             </Style>
-                            
+
                         </Button.Resources>
                         <Image Source="{StaticResource Plus}" Width="13" Height="13"/>
                     </Button>
                 </Grid>
-
-                <!--<Border Height="101"
-                        Background="White"
-                        BorderBrush="#707070"
-                        BorderThickness="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-
-
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Customer Name:" 
-                                   FontFamily="{StaticResource Poppins}"
-                                   FontSize="16"
-                                   FontWeight="Medium"
-                                   Foreground="#707070"
-                                   Margin="6 6 0 0"/>
-
-
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Phone number:" 
-                                   FontFamily="{StaticResource Poppins}"
-                                   FontSize="16"
-                                   FontWeight="Medium"
-                                   Foreground="#707070"
-                                   Margin="6 6 0 0"/>
-
-
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="ID:" 
-                                   FontFamily="{StaticResource Poppins}"
-                                   FontSize="16"
-                                   FontWeight="Medium"
-                                   Foreground="#707070"
-                                   Margin="68 6 0 0"/>
-
-
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Points:" 
-                                   FontFamily="{StaticResource Poppins}"
-                                   FontSize="16"
-                                   FontWeight="Medium"
-                                   Foreground="#707070"
-                                   Margin="68 6 0 0"/>
-
-
-                        <Border Style="{StaticResource dropbox_shadow}" Grid.Row="0" Grid.Column="0" Panel.ZIndex="0"/>
-                        <Border Style="{StaticResource shadow_card_border}" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="Aniss Fadel"/>
-                        </Border>
-                        <Border Style="{StaticResource dropbox_shadow}" Grid.Row="1" Grid.Column="0" Panel.ZIndex="0"/>
-                        <Border Style="{StaticResource shadow_card_border}" Grid.Row="1" Grid.Column="0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="1 (718) 123 - 4567"/>
-                        </Border>
-                        <Border Style="{StaticResource dropbox_shadow}" Grid.Row="0" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="0"/>
-                        <Border Style="{StaticResource shadow_card_border}" Grid.Row="0" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="12"/>
-                        </Border>
-                        <Border Style="{StaticResource dropbox_shadow}" Grid.Row="1" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="0"/>
-                        <Border Style="{StaticResource shadow_card_border}" Grid.Row="1" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="122"/>
-                        </Border>
-                    </Grid>
-                </Border>-->
 
                 <Border Height="101"
                         Background="White"
@@ -332,40 +293,81 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition />
                             <RowDefinition Height="Auto"/>
-                            
+
                         </Grid.RowDefinitions>
                         <!--// Table for customer inventory //-->
 
                         <Border BorderBrush="#707070"
                                 BorderThickness="0 0 0 1"
                                 Height="36"
-                                VerticalAlignment="Top"
                                 Background="White"
                                 Padding="7 0 0 0"
                                 Grid.Row="0">
 
-                            <StackPanel Orientation="Horizontal"
-                                        VerticalAlignment="Center"
-                                        >
-                                <StackPanel.Resources>
+                            <Grid VerticalAlignment="Center" Margin="0 0 17 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="84*"/>
+                                    <ColumnDefinition Width="209*"/>
+                                    <ColumnDefinition Width="156*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="71*"/>
+                                    <ColumnDefinition Width="43*"/>
+                                    <ColumnDefinition Width="43*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
                                         <Setter Property="FontSize" Value="16"/>
                                         <Setter Property="FontWeight" Value="SemiBold"/>
                                         <Setter Property="Foreground" Value="#707070"/>
                                     </Style>
-                                </StackPanel.Resources>
+                                </Grid.Resources>
 
-                                <TextBlock Text="Qty" Margin="0 0 56 0"/>
-                                <TextBlock Text="Item Info" Margin="0 0 136.9 0"/>
-                                <TextBlock Text="Discount %" Margin="0 0 67.6 0"/>
-                                <TextBlock Text="Unit" Margin="0 0 57.6 0"/>
-                                <TextBlock Text="Amount"/>
+                                <TextBlock Grid.Column="0" Text="Qty" />
+                                <TextBlock Grid.Column="1" Text="Item Info" />
+                                <TextBlock Grid.Column="2" Text="Discount %" />
+                                <TextBlock Grid.Column="3" Text="Unit"/>
+                                <TextBlock Grid.Column="4" Text="Amount"/>
 
-                            </StackPanel>
+                            </Grid>
 
                         </Border>
 
+                        <ScrollViewer Grid.Row="1">
+                        <ItemsControl 
+                                      ItemsSource="{Binding CustomerProducts}"
+                                      Padding="7 0 0 0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="35">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="84*"/>
+                                            <ColumnDefinition Width="209*"/>
+                                            <ColumnDefinition Width="156*"/>
+                                            <ColumnDefinition Width="90*"/>
+                                            <ColumnDefinition Width="71*"/>
+                                            <ColumnDefinition Width="43*"/>
+                                            <ColumnDefinition Width="43*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontSize" Value="15"/>
+                                                <Setter Property="FontWeight" Value="Regular"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <TextBlock Grid.Column="0" Text="{Binding Qty}"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding ItemInfo}" />
+                                        <TextBlock Grid.Column="2" Text="{Binding Discount}"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Unit, StringFormat='c'}" />
+                                        <TextBlock Grid.Column="4" Text="{Binding Amount, StringFormat='c'}"/>
+                                        <Image Grid.Column="5" HorizontalAlignment="Right" Source="{StaticResource Edit}" Width="17" Height="17" VerticalAlignment="Center"/>
+                                        <Image Grid.Column="6" Source="{StaticResource Bin}" Width="17" Height="21"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        </ScrollViewer>
                         <Border Height="133"
                                 VerticalAlignment="Bottom"
                                 Background="White"
@@ -393,27 +395,27 @@
                                            Foreground="#707070" />
                                 <TextBlock Grid.Row="0" 
                                            Grid.Column="1" 
-                                           Text="$22.98" 
+                                           Text="{Binding SubTotal, StringFormat='c'}" 
                                            HorizontalAlignment="Right"
                                            FontSize="20"
                                            FontFamily="Regular"
                                            Foreground="#707070"/>
-                                
+
                                 <TextBlock Grid.Row="1" 
                                            Grid.Column="0" 
                                            Text="Tax"
                                            FontSize="20"
                                            FontFamily="Regular"
                                            Foreground="#707070"/>
-                                
+
                                 <TextBlock Grid.Row="1"
                                            Grid.Column="1" 
-                                           Text="$0.00" 
+                                           Text="{Binding Tax, StringFormat='c'}" 
                                            HorizontalAlignment="Right"
                                            FontSize="20"
                                            FontFamily="Regular"
                                            Foreground="#707070"/>
-                                
+
                                 <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
 
                                 <TextBlock Grid.Row="2" 
@@ -422,10 +424,10 @@
                                            FontSize="24"
                                            FontFamily="Regular"
                                            Foreground="#707070" />
-                                
+
                                 <TextBlock Grid.Row="2" 
                                            Grid.Column="1" 
-                                           Text="$22.98" 
+                                           Text="{Binding GrandTotal, StringFormat='c'}" 
                                            HorizontalAlignment="Right"
                                            FontSize="24"
                                            FontFamily="Regular"
@@ -484,7 +486,8 @@
                              Foreground="White" 
                              Content="Continue"
                              FontSize="29"
-                             FontWeight="Medium" />
+                             FontWeight="Medium" 
+                             Click="Button_Click"/>
 
 
 
@@ -492,8 +495,8 @@
             </Grid>
         </Border>
 
-        <Border Grid.Column="1"
-                Margin="17 24 24 24" 
+        <Border Grid.Column="2"
+                Margin="17,24,24,24" 
                 Background="#F2F2F2"
                 BorderBrush="#707070"
                 BorderThickness="1">
@@ -509,7 +512,7 @@
 
                 <StackPanel Grid.Column="0" Orientation="Vertical">
                     <StackPanel.Resources>
-                        
+
                     </StackPanel.Resources>
 
 
@@ -521,10 +524,10 @@
                                Foreground="#707070"/>
                     <ListBox Background="Transparent"
                              BorderThickness="0">
-                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Category" />
-                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Wash, Dry, and Fold"/>
-                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Bedding"/>
-                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Dry Cleaning"/>
+                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Retail" IsSelected="{Binding IsRetail}" />
+                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Wash, Dry, and Fold" IsSelected="{Binding IsWDF}"/>
+                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Bedding" IsSelected="{Binding IsBedding}"/>
+                        <ListBoxItem Style="{StaticResource CategoryListBoxItemStyle}" Content="Dry Cleaning" IsSelected="{Binding IsDryCleaning}"/>
                     </ListBox>
                 </StackPanel>
                 <Line HorizontalAlignment="Right" 
@@ -540,21 +543,107 @@
 
                 <Grid Margin="8"
                       Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                     <TextBox HorizontalAlignment="Stretch" 
-                             VerticalAlignment="Top" Height="37" 
+                             VerticalAlignment="Stretch" 
                              VerticalContentAlignment="Center"
                              BorderBrush="#707070"
-                             BorderThickness="1">
+                             BorderThickness="1"
+                             Grid.Row="0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="6" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
+
+                    <ScrollViewer Grid.Row="1">
+
+                        <ItemsControl  HorizontalAlignment="Left" ItemsSource="{Binding Products}" Focusable="True">
+
+                            <!--<ItemsControl.Resources>
+                                <Style x:Key="ProductBtn" TargetType="Button">
+                                    <Setter Property="Width" Value="123" />
+                                    <Setter Property="Height" Value="164" />
+                                    <Setter Property="Margin" Value="0 12 12 0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+
+                                            <ControlTemplate TargetType="Button">
+                                                <Border x:Name="border"
+                                                    BorderBrush="#707070"
+                                                    BorderThickness="1"
+                                                    CornerRadius="6"
+                                                    Background="White"
+                                                    Cursor="Hand">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="43" />
+                                                            <RowDefinition Height="88"/>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Text="{Binding ProductName}"
+                                                               TextAlignment="Center"
+                                                               Foreground="#707070"
+                                                               FontWeight="SemiBold"
+                                                               FontSize="14"/>
+                                                        <Image Grid.Row="1" Source="/Assets/Images/test.jpg" />
+                                                        <TextBlock Grid.Row="2"
+                                                               Text="{Binding Price, StringFormat='{}{0:c}'}"
+                                                               TextAlignment="Center"
+                                                               VerticalAlignment="Bottom"
+                                                               Foreground="#707070"
+                                                               FontWeight="SemiBold"
+                                                               FontSize="14"
+                                                               FontStyle="Italic"/>
+                                                    </Grid>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="Button.IsMouseOver" 
+                                                         Value="True">
+                                                        <Setter Property="Background" 
+                                                            TargetName="border"
+                                                            Value="#D8F3FC" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+
+
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ItemsControl.Resources>-->
+
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!--<Button Content="{Binding ProductName}" 
+                                            Style="{StaticResource ProductBtn}" 
+                                            Command="{Binding AddProductCommand}" 
+                                            CommandParameter="{Binding Id}"/>-->
+                                    <custom:ProductButton ProductName="{Binding ProductName}"
+                                                          Price="{Binding Price, StringFormat='c'}"
+                                                          Command="{Binding AddProductCommand}" 
+                                            CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+
+                        </ItemsControl>
+                    </ScrollViewer>
+
                 </Grid>
             </Grid>
-             
-            
+
+
         </Border>
     </Grid>
 </UserControl>

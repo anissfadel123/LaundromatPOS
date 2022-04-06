@@ -16,27 +16,18 @@ using System.Windows.Shapes;
 namespace LaundroDesktopUI.Views
 {
     /// <summary>
-    /// Interaction logic for NewSaleView.xaml
+    /// Interaction logic for RegisterCustomerView.xaml
     /// </summary>
-    public partial class NewSaleView : UserControl
+    public partial class RegisterCustomerView : UserControl
     {
-        public NewSaleView()
+        public RegisterCustomerView()
         {
             InitializeComponent();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var parentWindow = Window.GetWindow(this) as MainWindow;
-            if(parentWindow != null)
-            {
-                parentWindow.PaymentModel.IsOpen = true;
-            }
+            RegisterModal.IsOpen = false;
         }
     }
 }
