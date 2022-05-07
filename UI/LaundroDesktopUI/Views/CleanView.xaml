@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="LaundroDesktopUI.Views.CleanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LaundroDesktopUI.Views"
+             xmlns:custom="clr-namespace:LaundroDesktopUI.CustomControls"
+             xmlns:vms="clr-namespace:LaundroDesktopUI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="1010" d:DesignWidth="1920"
+             >
+    <Grid Margin="60 24 60 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        
+
+        <TextBox Grid.Row="0"
+                 Width="884"
+                 Height="37"
+                 HorizontalAlignment="Left"
+                 Margin="0 0 0 14"/>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="325*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="1030*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="325*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    CornerRadius="25"
+                    BorderThickness="1"
+                    BorderBrush="#707070"
+                    Background="White"
+                    Grid.Column="1"
+                    Padding="40 10 40 10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" 
+                               Text="To Do" 
+                               FontSize="24" 
+                               FontWeight="Medium"  
+                               HorizontalAlignment="Center"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+
+                        <ItemsControl  HorizontalAlignment="Stretch"  ItemsSource="{Binding ToDoList}" Focusable="True">
+
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <custom:WdfCard DisplayLeftArrow="False"
+                                                    ButtonText="Wash"
+                                                    ButtonColor="#264CE2"/>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+                
+                
+            </Border>
+
+            <Border VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    CornerRadius="25"
+                    BorderThickness="1"
+                    BorderBrush="#707070"
+                    Background="White"
+                    Grid.Column="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" 
+                               Text="Wash" 
+                               FontSize="24" 
+                               FontWeight="Medium"  
+                               HorizontalAlignment="Center"/>
+
+                        <ScrollViewer Grid.Row="1" Margin="40 10 40 10" VerticalScrollBarVisibility="Hidden">
+
+                            <ItemsControl  HorizontalAlignment="Stretch"  ItemsSource="{Binding WashList}" Focusable="True">
+
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vms:WdfCardViewModel}">
+                                        <custom:WdfCard Id="{Binding Id}" 
+                                                        CustomerName="{Binding CustomerName}" 
+                                                        Total="{Binding Total}"
+                                                        ReadyBy="{Binding ReadyBy}"
+                                                        ButtonText="Dry"
+                                                        ButtonColor="#2DC20F"/>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" 
+                               Text="Dry" 
+                               FontSize="24" 
+                               FontWeight="Medium"  
+                               HorizontalAlignment="Center"/>
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="40 10 40 10">
+
+                            <ItemsControl  HorizontalAlignment="Stretch"  ItemsSource="{Binding DryList}" Focusable="True">
+
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vms:WdfCardViewModel}">
+                                        <custom:WdfCard Id="{Binding Id}" 
+                                                        CustomerName="{Binding CustomerName}" 
+                                                        Total="{Binding Total}"
+                                                        ReadyBy="{Binding ReadyBy}"
+                                                        ButtonText="Fold"
+                                                        ButtonColor="#D51A13"/>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" 
+                               Text="Fold" 
+                               FontSize="24" 
+                               FontWeight="Medium"  
+                               HorizontalAlignment="Center"/>
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="40 10 40 10">
+
+                            <ItemsControl  HorizontalAlignment="Stretch"  ItemsSource="{Binding FoldList}" Focusable="True">
+
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vms:WdfCardViewModel}">
+                                        <custom:WdfCard Id="{Binding Id}" 
+                                                        CustomerName="{Binding CustomerName}" 
+                                                        Total="{Binding Total}"
+                                                        ReadyBy="{Binding ReadyBy}"
+                                                        ButtonText="Ready"
+                                                        ButtonColor="#13D58F"/>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+
+            </Border>
+
+            <Border VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    CornerRadius="25"
+                    BorderThickness="1"
+                    BorderBrush="#707070"
+                    Background="White"
+                    Grid.Column="5"
+                    Padding="40 10 40 10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" 
+                               Text="Completed Today" 
+                               FontSize="24" 
+                               FontWeight="Medium"  
+                               HorizontalAlignment="Center"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+
+                        <ItemsControl  HorizontalAlignment="Stretch"  ItemsSource="{Binding CompletedTodayList}" Focusable="True">
+
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vms:WdfCardViewModel}">
+                                    <custom:WdfCard Id="{Binding Id}"  
+                                                    Total="{Binding Total}"
+                                                    ReadyBy="{Binding ReadyBy}"
+                                                    DisplayLeftArrow="False"
+                                                    DisplayButton="False"/>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+
+
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media.Imaging;
 
 namespace LaundroDesktopUI.CustomControls
 {
@@ -36,7 +37,22 @@ namespace LaundroDesktopUI.CustomControls
         public static readonly DependencyProperty PriceProperty =
             DependencyProperty.Register("Price", typeof(string), typeof(ProductButton), new PropertyMetadata(""));
 
-        
+
+
+
+
+
+        public string ProductImageSource
+        {
+            get { return (string)GetValue(ProductImageSourceProperty); }
+            set { SetValue(ProductImageSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ProductImageSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ProductImageSourceProperty =
+            DependencyProperty.Register("ProductImageSource", typeof(string), typeof(ProductButton), new PropertyMetadata(null));
+
+
 
 
 

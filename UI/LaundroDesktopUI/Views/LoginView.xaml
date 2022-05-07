@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="LaundroDesktopUI.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:components="clr-namespace:LaundroDesktopUI.Components"
+             xmlns:local="clr-namespace:LaundroDesktopUI.Views"
+             mc:Ignorable="d"
+             Background="#C8F0FF"
+             Visibility="{Binding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+        <Border Width="479" Height="511" 
+                BorderThickness="1" BorderBrush="#707070" 
+                Background="White" CornerRadius="15">
+            <StackPanel Margin="35 0 35 0">
+                <TextBlock Text="Login" HorizontalAlignment="Center" 
+                           FontSize="42" FontWeight="Medium" 
+                           Foreground="#707070" Margin="0 25 0 5"/>
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" FontSize="20" HorizontalAlignment="Center" Height="25"/>
+                <TextBlock Text="Username or Email Address" FontSize="25" 
+                           Foreground="#707070" />
+                <Grid Margin="0 0 0 30">
+                    <TextBox Height="70" VerticalContentAlignment="Center" Padding="68 0 0 0" 
+                             FontSize="20" FontWeight="Medium" Foreground="#707070"
+                             Text="{Binding Username}"/>
+                    <Image Width="20" Height="22" Source="{StaticResource User}"
+                           HorizontalAlignment="Left" Margin="20 0 0 0"/>
+                </Grid>
+                <TextBlock Text="Password" FontSize="25" Foreground="#707070" />
+                <Grid>
+                    <components:BindablePasswordBox Height="70" 
+                                 Password="{Binding Password}"/>
+                    <Image Source="{StaticResource Lock}" 
+                           Width="20" Height="26" 
+                           HorizontalAlignment="Left" 
+                           Margin="20 0 0 0" />
+                </Grid>
+                <TextBlock Text="Forgot Password?" Margin="0 8 0 0" 
+                           TextDecorations="Underline" FontSize="18" 
+                           Foreground="#707070" />
+                
+                <Button Content="Login" Width="170" Height="50" 
+                        FontSize="25" Foreground="White" 
+                        Background="#0051DE" HorizontalAlignment="Right"
+                        Margin="0 30 0 0" Command="{Binding LoginCommand}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

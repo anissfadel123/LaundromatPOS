@@ -17,11 +17,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaundroAPI.Library", "API\L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaundroDesktopUI", "UI\LaundroDesktopUI\LaundroDesktopUI.csproj", "{F705B1FC-E1EA-412D-9DB8-68FE6C77A53A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PracticeUI", "PracticeUI", "{337F13D6-AC62-4469-B61D-E35D06CB6289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaundroDesktopUI.Library", "UI\LaundromatUI.Library\LaundroDesktopUI.Library.csproj", "{B409BE76-57AA-4743-BC9B-AE1FFB764586}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfPractice", "PracticeUI\WpfPractice\WpfPractice.csproj", "{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundroDesktopUI.Library", "UI\LaundromatUI.Library\LaundroDesktopUI.Library.csproj", "{B409BE76-57AA-4743-BC9B-AE1FFB764586}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prototype", "Prototype", "{52F77F49-775B-4CCF-B640-2EAD80269300}"
+	ProjectSection(SolutionItems) = preProject
+		Prototype\Add Product Modal.png = Prototype\Add Product Modal.png
+		Prototype\Cancel Modal.png = Prototype\Cancel Modal.png
+		Prototype\Cash Input Modal.png = Prototype\Cash Input Modal.png
+		Prototype\Desktop - Clean.png = Prototype\Desktop - Clean.png
+		Prototype\Desktop - Login.png = Prototype\Desktop - Login.png
+		Prototype\Desktop - New Sale – 1.png = Prototype\Desktop - New Sale – 1.png
+		Prototype\Desktop - New Sale.png = Prototype\Desktop - New Sale.png
+		Prototype\Desktop - Ready.png = Prototype\Desktop - Ready.png
+		Prototype\Edit Product Modal.png = Prototype\Edit Product Modal.png
+		Prototype\Insert Customer Modal.png = Prototype\Insert Customer Modal.png
+		Prototype\Menu.png = Prototype\Menu.png
+		Prototype\Payment Modal.png = Prototype\Payment Modal.png
+		Prototype\Register Modal.png = Prototype\Register Modal.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +60,6 @@ Global
 		{F705B1FC-E1EA-412D-9DB8-68FE6C77A53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F705B1FC-E1EA-412D-9DB8-68FE6C77A53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F705B1FC-E1EA-412D-9DB8-68FE6C77A53A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B409BE76-57AA-4743-BC9B-AE1FFB764586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B409BE76-57AA-4743-BC9B-AE1FFB764586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B409BE76-57AA-4743-BC9B-AE1FFB764586}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,7 +73,6 @@ Global
 		{559E6B24-17B2-4163-86ED-05EAE1D2AAB2} = {322314EA-DE04-4EC5-8F0D-38B4303020B1}
 		{078DCD16-2C73-4BDE-BC7E-2BE011BDA96D} = {322314EA-DE04-4EC5-8F0D-38B4303020B1}
 		{F705B1FC-E1EA-412D-9DB8-68FE6C77A53A} = {D7958233-D648-49B0-862E-90D0C9BA51F0}
-		{1132C8F2-DBC0-4EFD-A2C9-F835BE920E08} = {337F13D6-AC62-4469-B61D-E35D06CB6289}
 		{B409BE76-57AA-4743-BC9B-AE1FFB764586} = {D7958233-D648-49B0-862E-90D0C9BA51F0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

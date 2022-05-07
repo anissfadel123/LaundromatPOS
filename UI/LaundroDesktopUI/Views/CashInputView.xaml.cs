@@ -25,9 +25,5 @@ namespace LaundroDesktopUI.Views
             InitializeComponent();
         }
 
-        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            cashInputModal.IsOpen = false;
-        }
     }
 }

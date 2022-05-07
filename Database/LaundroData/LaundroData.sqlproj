@@ -79,6 +79,15 @@
     <Build Include="dbo\Stored Procedures\spProducts_UpdateProduct.sql" />
     <Build Include="dbo\Stored Procedures\spProducts_Insert.sql" />
     <Build Include="dbo\Stored Procedures\spProducts_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_GetWdf.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_UpdateWdf.sql" />
+    <Build Include="dbo\spWdfs_DeleteWdf.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_IncrementWdfStatus.sql" />
+    <Build Include="dbo\Stored Procedures\spWdfs_DecrementWdfStatus.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Stored Procedures\spUserLookup.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="LaundroData.refactorlog" />

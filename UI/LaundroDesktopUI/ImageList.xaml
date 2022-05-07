@@ -18,6 +18,63 @@
                  UriSource="Assets/Images/credit-card.png" />
     <BitmapImage x:Key="Close"
                  UriSource="Assets/Images/close.png" />
+    <BitmapImage x:Key="Info"
+                 UriSource="Assets/Images/info.png" />
+    <BitmapImage x:Key="LeftArrow"
+                 UriSource="Assets/Images/arrow-left.png" />
+
+    
+    
+    <BitmapImage x:Key="BlueCashRegister" 
+                 UriSource="Assets/Images/blue-cash-register.png" />  
+    
+    <BitmapImage x:Key="BluePackage" 
+                 UriSource="Assets/Images/blue-package.png" />
+
+    <BitmapImage x:Key="BlueRevenue" 
+                 UriSource="Assets/Images/blue-money-bill-wave.png" />
+
+    <BitmapImage x:Key="BlueAnalytics" 
+                 UriSource="Assets/Images/blue-analytics.png" />
+
+    <BitmapImage x:Key="BlueSetting" 
+                 UriSource="Assets/Images/blue-settings.png" />
+
+    <BitmapImage x:Key="BlueLogout" 
+                 UriSource="Assets/Images/blue-logout.png" />
+
+
+
+    <BitmapImage x:Key="WhiteCashRegister" 
+                 UriSource="Assets/Images/white-cash-register.png" />
+    
+    <BitmapImage x:Key="WhitePackage" 
+                 UriSource="Assets/Images/white-package.png" />
+
+    <BitmapImage x:Key="WhiteRevenue" 
+                 UriSource="Assets/Images/white-money-bill-wave.png" />
+
+    <BitmapImage x:Key="WhiteAnalytics" 
+                 UriSource="Assets/Images/white-analytics.png" />
+
+    <BitmapImage x:Key="WhiteSetting" 
+                 UriSource="Assets/Images/white-settings.png" />
+
+    <BitmapImage x:Key="WhiteLogout" 
+                 UriSource="Assets/Images/white-logout.png" />
+
+    <BitmapImage x:Key="BlueClose" 
+                 UriSource="Assets/Images/blue-close.png" />
+
+    <BitmapImage x:Key="Lock"
+                 UriSource="Assets/Images/lock.png" />    
+    <BitmapImage x:Key="User"
+                 UriSource="Assets/Images/user.png" />    
+    
+    <BitmapImage x:Key="Refresh"
+                 UriSource="Assets/Images/refresh.png" />    
+    <BitmapImage x:Key="Image"
+                 UriSource="Assets/Images/image.png" />
 
 
 </ResourceDictionary>

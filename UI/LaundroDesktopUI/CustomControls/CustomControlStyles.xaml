@@ -28,7 +28,7 @@
                                        Foreground="#707070"
                                        FontWeight="SemiBold"
                                        FontSize="14"/>
-                            <Image Grid.Row="1" Source="/Assets/Images/test.jpg" />
+                            <Image Grid.Row="1" Source="{Binding ProductImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
                             <TextBlock Grid.Row="2"
                                        Text="{TemplateBinding Price}"
                                        TextAlignment="Center"
@@ -72,12 +72,13 @@
 
                         </Grid>
 
-                        <Border HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
+                        <Border x:Name="mainBorder"
+                                HorizontalAlignment="{TemplateBinding ModalHorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding ModalVerticalAlignment}"
                                 Height="{TemplateBinding ModalHeight}"
                                 Width="{TemplateBinding ModalWidth}">
                             <Grid>
-                                <Border x:Name="border" CornerRadius="7" Background="White" />
+                                <Border x:Name="border" CornerRadius="{TemplateBinding ModalCornerRadius}" Background="White" />
                                 
 
                                 <ContentControl Content="{TemplateBinding Content}"  Margin="0 0 0 20"/>
@@ -86,6 +87,101 @@
 
                         </Border>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style TargetType="local:WdfCard">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WdfCard">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                        
+                        <Style TargetType="Button" x:Key="ArrowButton">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image  Source="{StaticResource LeftArrow}" 
+                                                Height="17" Width="17" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        
+                        
+                    </ControlTemplate.Resources>
+                    
+                    
+                    <Border BorderBrush="#707070"
+                                        BorderThickness="1"
+                                        Height="161"
+                                        Background="#F5F5F5"
+                                            Margin="0 10 0 10">
+                        <Grid Margin="8 4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0"
+                                        Grid.Column="0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="#" FontSize="18" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding Id}" FontSize="18" FontWeight="Medium"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding CustomerName}" FontSize="18" FontWeight="Medium"/>
+
+                            </StackPanel>
+                            <Image Grid.Row="0"  Grid.Column="1" Source="{StaticResource Info}" Height="25" Width="25" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Hand"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding ReadyBy, StringFormat='ddd, M/d, h:mm tt'}" FontSize="15" FontWeight="Light"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Total, StringFormat='c'}" FontSize="15" FontWeight="Light" HorizontalAlignment="Right"/>
+                            
+                            <Button Grid.Row="2" 
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left" 
+                                    Cursor="Hand" 
+                                    Style="{StaticResource ArrowButton}" 
+                                    Command="{Binding DecrementStatusCommand}"
+                                    CommandParameter="{Binding Id}"
+                                    Visibility="{Binding DisplayLeftArrow, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                                
+                            
+                            </Button>
+
+                            <Button Grid.Row ="2" 
+                                    Grid.Column="0" 
+                                    Grid.ColumnSpan="3" 
+                                    Content="{Binding Path=ButtonText, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    Foreground="White" 
+                                    FontWeight="Medium" 
+                                    FontSize="12" 
+                                    Width="86" 
+                                    Height="25"
+                                    Visibility="{Binding Path=DisplayButton, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                    Command="{Binding IncrementStatusCommand}"
+                                    CommandParameter="{Binding Id}">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="12" />
+                                    </Style>
+                                </Button.Resources>
+                                <Button.Background>
+                                    <SolidColorBrush Color="{Binding Path=ButtonColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
+
+
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -5,11 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LaundroDesktopUI.Views"
              xmlns:vms="clr-namespace:LaundroDesktopUI.ViewModels" 
+             xmlns:main="clr-namespace:LaundroDesktopUI"
              xmlns:custom="clr-namespace:LaundroDesktopUI.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="1010" 
              d:DesignWidth="1920"
-             Background="White">
+             Background="White"
+             >
     <UserControl.Resources>
         <Style x:Key="dropbox_shadow" TargetType="Border">
             <Setter Property="Width" Value="170" />
@@ -171,39 +173,57 @@
 
                     <!--// Scan or Enter Barcode textBox //-->
 
-                    <TextBox BorderBrush="#707070"
-                             FontFamily="{StaticResource Poppins}"
-                             FontSize="17"
-                             Padding="5"
+                    <TextBox Padding="5"
                              Grid.Column="0"
-                             VerticalContentAlignment="Center">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="6" />
-                            </Style>
-                        </TextBox.Resources>
+                             Style="{StaticResource WatermarkTextbox}"
+                             Text="{Binding Barcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Command="{Binding AddProductByBarcodeCommand}" Key="Enter" />
+                        </TextBox.InputBindings>
                     </TextBox>
 
                     <!--// Customer name textBox //-->
+                    <!--<Grid x:Name="Container" Grid.Column="1" Margin="5.5 0 5.5 0">
+                        <TextBox Grid.Column="1"
+                                 Style="{StaticResource CustomerWatermarkTextbox}"
+                                 AutoWordSelection="True"/>
+                        <Popup Placement="Bottom" IsOpen="True" Width="{Binding ActualWidth, ElementName=Container}">
+                            <ListBox ItemsSource="{Binding CustomerNameId}"/>
+                        </Popup>
 
-                    <TextBox BorderBrush="#707070"
-                             Margin="5.5 0 5.5 0"
-                             FontFamily="{StaticResource Poppins}"
-                             FontSize="17"
-                             Padding="5"
-                             Grid.Column="1"
-                             VerticalContentAlignment="Center">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="6" />
+                    </Grid>-->
+
+                    <!--<ComboBox Margin="5.5 0 5.5 0"
+                              Focusable="True"
+                              IsTextSearchEnabled="False"
+                              Grid.Column="1"
+                              IsEditable="True"
+                              Text="{Binding CustomerSearch}"
+                              VerticalContentAlignment="Center"
+                              FontSize="22"
+                              SelectedItem="{Binding SelectedCustomer}"
+                              ItemsSource="{Binding CustomerSearches}" KeyUp="ComboBox_KeyUp"/>-->
+                    <Button Grid.Column="1"
+                            Margin="5.5 0 5.5 0"
+                            Content="Select Customer"
+                            Background="#C8F0FF"
+                            FontSize="17"
+                            Foreground="#707070"
+                            Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                            CommandParameter="{Binding DataContext.SelectCustomerVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5" />
                             </Style>
-                        </TextBox.Resources>
-                    </TextBox>
+
+                        </Button.Resources>
+                    </Button>
 
 
                     <Button BorderBrush="#707070"
                             Grid.Column="2"
-                            Background="#C8F0FF">
+                            Background="#C8F0FF"
+                            Click="Button_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -213,6 +233,7 @@
                         <Image Source="{StaticResource Plus}" Width="13" Height="13"/>
                     </Button>
                 </Grid>
+                <!--<ListBox Grid.Row="0"  Panel.ZIndex="1" VerticalAlignment="Top" Margin="325,46,51,0" ItemsSource="{Binding CustomerNameId}"/>-->
 
                 <Border Height="101"
                         Background="White"
@@ -267,19 +288,19 @@
 
                         <Border Style="{StaticResource dropbox_shadow}" Grid.Row="0" Grid.Column="0" Panel.ZIndex="0"/>
                         <Border Style="{StaticResource shadow_card_border}" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="Aniss Fadel"/>
+                            <TextBlock Style="{StaticResource card_text}" Text="{Binding CustomerVM.CustomerName}"/>
                         </Border>
                         <Border Style="{StaticResource dropbox_shadow}" Grid.Row="1" Grid.Column="0" Panel.ZIndex="0"/>
                         <Border Style="{StaticResource shadow_card_border}" Grid.Row="1" Grid.Column="0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="1 (718) 123 - 4567"/>
+                            <TextBlock Style="{StaticResource card_text}" Text="{Binding CustomerVM.PhoneNumber}"/>
                         </Border>
                         <Border Style="{StaticResource dropbox_shadow}" Grid.Row="0" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="0"/>
                         <Border Style="{StaticResource shadow_card_border}" Grid.Row="0" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="12"/>
+                            <TextBlock Style="{StaticResource card_text}" Text="{Binding CustomerVM.ID}"/>
                         </Border>
                         <Border Style="{StaticResource dropbox_shadow}" Grid.Row="1" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="0"/>
                         <Border Style="{StaticResource shadow_card_border}" Grid.Row="1" Grid.Column="1" Margin="0 0 27 0" Panel.ZIndex="1">
-                            <TextBlock Style="{StaticResource card_text}" Text="122"/>
+                            <TextBlock Style="{StaticResource card_text}" Text="{Binding CustomerVM.Points}"/>
                         </Border>
                     </Grid>
                 </Border>
@@ -334,39 +355,77 @@
                         </Border>
 
                         <ScrollViewer Grid.Row="1">
-                        <ItemsControl 
-                                      ItemsSource="{Binding CustomerProducts}"
-                                      Padding="7 0 0 0">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Height="35">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="84*"/>
-                                            <ColumnDefinition Width="209*"/>
-                                            <ColumnDefinition Width="156*"/>
-                                            <ColumnDefinition Width="90*"/>
-                                            <ColumnDefinition Width="71*"/>
-                                            <ColumnDefinition Width="43*"/>
-                                            <ColumnDefinition Width="43*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.Resources>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="FontSize" Value="15"/>
-                                                <Setter Property="FontWeight" Value="Regular"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                            </Style>
-                                        </Grid.Resources>
-                                        <TextBlock Grid.Column="0" Text="{Binding Qty}"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding ItemInfo}" />
-                                        <TextBlock Grid.Column="2" Text="{Binding Discount}"/>
-                                        <TextBlock Grid.Column="3" Text="{Binding Unit, StringFormat='c'}" />
-                                        <TextBlock Grid.Column="4" Text="{Binding Amount, StringFormat='c'}"/>
-                                        <Image Grid.Column="5" HorizontalAlignment="Right" Source="{StaticResource Edit}" Width="17" Height="17" VerticalAlignment="Center"/>
-                                        <Image Grid.Column="6" Source="{StaticResource Bin}" Width="17" Height="21"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                            <ItemsControl 
+                                x:Name="MyItems"
+                                ItemsSource="{Binding CustomerProducts}"
+                                Padding="7 0 0 0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="35">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="84*"/>
+                                                <ColumnDefinition Width="209*"/>
+                                                <ColumnDefinition Width="156*"/>
+                                                <ColumnDefinition Width="90*"/>
+                                                <ColumnDefinition Width="71*"/>
+                                                <ColumnDefinition Width="43*"/>
+                                                <ColumnDefinition Width="43*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="FontSize" Value="15"/>
+                                                    <Setter Property="FontWeight" Value="Regular"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                </Style>
+                                            </Grid.Resources>
+                                            <TextBlock Grid.Column="0" Text="{Binding Quantity}"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding ItemInfo}" />
+                                            <TextBlock Grid.Column="2" Text="{Binding Discount}"/>
+                                            <TextBlock Grid.Column="3" Text="{Binding Unit, StringFormat='c'}" />
+                                            <TextBlock Grid.Column="4" Text="{Binding Amount, StringFormat='c'}"/>
+                                            <Button Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                                    Command="{Binding DataContext.OpenEditProductModal, RelativeSource={RelativeSource AncestorType=Window} }" 
+                                                    CommandParameter="{Binding}">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <Image  Source="{StaticResource Edit}" 
+                                                                            Width="17" 
+                                                                            Height="17"
+                                                                            Cursor="Hand"/>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                            <Button Grid.Column="6" 
+                                                    HorizontalAlignment="Right" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0 0 3 0"
+                                                    Command="{Binding DeleteItemCommand}"
+                                                    CommandParameter="{Binding}">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <Image  Source="{StaticResource Bin}" 
+                                                                            Width="17" 
+                                                                            Height="21"
+                                                                            Cursor="Hand"/>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
                         <Border Height="133"
                                 VerticalAlignment="Bottom"
@@ -469,7 +528,9 @@
                             Foreground="White" 
                             Content="Cancel"
                             FontSize="29"
-                            FontWeight="Medium"/>
+                            FontWeight="Medium"
+                            Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                            CommandParameter="{Binding DataContext.CancelVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"/>
                     <Button x:Name="voidBtn" 
                             Background="#707070" 
                             HorizontalAlignment="Stretch"
@@ -486,8 +547,13 @@
                              Foreground="White" 
                              Content="Continue"
                              FontSize="29"
-                             FontWeight="Medium" 
-                             Click="Button_Click"/>
+                             FontWeight="Medium"
+                             Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                             CommandParameter="{Binding DataContext.PaymentSelectionVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                              >
+                        <!--Command="{Binding OpenModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vms:MainViewModel}}}"
+                             CommandParameter="{Binding PaymentModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"-->
+                    </Button>
 
 
 
@@ -547,18 +613,27 @@
                         <RowDefinition Height="37"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBox HorizontalAlignment="Stretch" 
-                             VerticalAlignment="Stretch" 
-                             VerticalContentAlignment="Center"
-                             BorderBrush="#707070"
-                             BorderThickness="1"
-                             Grid.Row="0">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="6" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Stretch" 
+                                 VerticalContentAlignment="Center"
+                                 BorderBrush="#707070"
+                                 BorderThickness="1"
+                                 Grid.Column="0">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="6" />
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Button Grid.Column="1" Margin="20 0 0 0" Content="Add Product"
+                                Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                                CommandParameter="{Binding DataContext.AddNewProductVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"/>
+                    </Grid>
 
                     <ScrollViewer Grid.Row="1">
 
@@ -631,11 +706,11 @@
                                             CommandParameter="{Binding Id}"/>-->
                                     <custom:ProductButton ProductName="{Binding ProductName}"
                                                           Price="{Binding Price, StringFormat='c'}"
+                                                          ProductImageSource ="{Binding ProductImageSource}"
                                                           Command="{Binding AddProductCommand}" 
-                                            CommandParameter="{Binding Id}" />
+                                                          CommandParameter="{Binding Id}" />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-
 
                         </ItemsControl>
                     </ScrollViewer>

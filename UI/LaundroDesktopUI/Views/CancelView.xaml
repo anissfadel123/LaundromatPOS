@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="LaundroDesktopUI.Views.CancelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LaundroDesktopUI.Views"
+             xmlns:custom="clr-namespace:LaundroDesktopUI.CustomControls"
+             xmlns:main="clr-namespace:LaundroDesktopUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920" >
+    <custom:Modal IsOpen="{Binding IsOpen}" ModalHeight="140" ModalWidth="356">
+        <Grid Margin="11 14 11 0">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}" >
+                    <Setter Property="Width" Value="160" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="FontSize" Value="21" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Medium" />
+                </Style>
+            </Grid.Resources>
+            <TextBlock Text="Cancel Customer Transaction?"  
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Center"
+                       FontSize="21"
+                       FontWeight="SemiBold"/>
+
+            <Button Content="No" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Left"
+                    Background="#264CE2"
+                    Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                    CommandParameter="{Binding DataContext.CancelVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="Yes" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right"
+                    Background="#DD3B3B"
+                    Command="{Binding CancelTransactionCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        
+    </custom:Modal>
+    
+</UserControl>

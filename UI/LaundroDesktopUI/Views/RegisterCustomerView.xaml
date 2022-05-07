@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LaundroDesktopUI.Views"
              xmlns:custom="clr-namespace:LaundroDesktopUI.CustomControls"
+             xmlns:main="clr-namespace:LaundroDesktopUI"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
     <custom:Modal x:Name="RegisterModal" 
                   ModalWidth="390"
-                  ModalHeight="487" 
-                  IsOpen="False">
+                  ModalHeight="554" 
+                  IsOpen="{Binding IsOpen}">
         <StackPanel>
             
             <StackPanel.Resources>
@@ -26,12 +27,12 @@
                     <Setter Property="Padding" Value="5" />
                     <Setter Property="Width" Value="337" />
                     <Setter Property="Height" Value="45" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Style.Resources>
+                    <!--<Setter Property="BorderBrush" Value="Black" />-->
+                    <!--<Style.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="6" />
                         </Style>
-                    </Style.Resources>
+                    </Style.Resources>-->
                 </Style>
 
                 <Style TargetType="Button">
@@ -49,31 +50,58 @@
                     </Style.Resources>
                 </Style>
             </StackPanel.Resources>
-            
-            
-            <Image  Width="13"
-                    Height="13"
-                    Source="{StaticResource Close}" 
-                    HorizontalAlignment="Right"
-                    Margin="0 10 10 20"
-                    Cursor="Hand"
-                    MouseLeftButtonUp="Image_MouseLeftButtonUp">
-            </Image>
+
+            <Button Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}"
+                    CommandParameter="{Binding DataContext.RegisterCustomerVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Image  Width="13"
+                                            Height="13"
+                                            Source="{StaticResource Close}" 
+                                            HorizontalAlignment="Right"
+                                            Margin="0 10 10 20"
+                                            Cursor="Hand"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+
             <TextBlock Text="Register Customer"
                        HorizontalAlignment="Center"
                        FontSize="22"
                        FontWeight="SemiBold"
                        Foreground="Black"
                        Margin="0 0 0 20"/>
-            <Label Content="Name"/>
-            <TextBox />
-            <Label Content="Phone"/>
-            <TextBox />
+            <StackPanel Orientation="Horizontal">
+                <Label Content="First Name" />
+                <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="0"/>
+            </StackPanel>
+            
+            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Last Name"/>
+                <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="0"/>
+            </StackPanel>
+            <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Phone"/>
+                <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="0"/>
+            </StackPanel>
+            <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                
             <Label Content="Email"/>
-            <TextBox />
+            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Address"/>
-            <TextBox />
-            <Button Content="Submit"/>
+            <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Submit" Command="{Binding SubmitCommand}"/>
 
         </StackPanel>
 

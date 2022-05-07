@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaundroDesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,18 +26,40 @@ namespace LaundroDesktopUI.Views
             InitializeComponent();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //private void ComboBox_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    var newSaleVM = this.DataContext as NewSaleViewModel;
+        //    var comboBox = (sender as ComboBox);
+        //    if (e.Key >= Key.A && e.Key<=Key.Z || e.Key >= Key.D0 && e.Key <= Key.D9) 
+        //    {
+        //        _ = newSaleVM.GetCustomerContains();
+        //        comboBox.IsDropDownOpen = true;
+        //    }
+        //    else if(e.Key == Key.Enter)
+        //    {
+        //        newSaleVM.CustomerSearch = "";
+        //        comboBox.Focusable = false;
+        //    }
 
+        //}
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await (this.DataContext as NewSaleViewModel).LoadProductAsync();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var parentWindow = Window.GetWindow(this) as MainWindow;
-            if(parentWindow != null)
-            {
-                parentWindow.PaymentModel.IsOpen = true;
-            }
-        }
+        //private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var parentWindow = Window.GetWindow(this) as MainWindow;
+        //    if(parentWindow != null)
+        //    {
+        //        parentWindow.PaymentModel.IsOpen = true;
+        //    }
+        //}
     }
 }

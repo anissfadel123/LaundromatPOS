@@ -42,9 +42,50 @@ namespace LaundroDesktopUI.CustomControls
             set { SetValue(ModalWidthProperty, value); }
         }
 
+
         // Using a DependencyProperty as the backing store for ModalWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ModalWidthProperty =
             DependencyProperty.Register("ModalWidth", typeof(double), typeof(Modal), new PropertyMetadata(200.0));
+
+
+
+
+        public VerticalAlignment ModalVerticalAlignment
+        {
+            get { return (VerticalAlignment)GetValue(ModalVerticalAlignmentProperty); }
+            set { SetValue(ModalVerticalAlignmentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ModalVerticalAlignment.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ModalVerticalAlignmentProperty =
+            DependencyProperty.Register("ModalVerticalAlignment", typeof(VerticalAlignment), typeof(Modal), new PropertyMetadata(VerticalAlignment.Center));
+
+
+
+
+        public HorizontalAlignment ModalHorizontalAlignment
+        {
+            get { return (HorizontalAlignment)GetValue(ModalHorizontalAlignmentProperty); }
+            set { SetValue(ModalHorizontalAlignmentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ModalHorizontalAlignment.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ModalHorizontalAlignmentProperty =
+            DependencyProperty.Register("ModalHorizontalAlignment", typeof(HorizontalAlignment), typeof(Modal), new PropertyMetadata(HorizontalAlignment.Center));
+
+
+
+        public CornerRadius ModalCornerRadius
+        {
+            get { return (CornerRadius)GetValue(ModalCornerRadiusProperty); }
+            set { SetValue(ModalCornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ModalCornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ModalCornerRadiusProperty =
+            DependencyProperty.Register("ModalCornerRadius", typeof(CornerRadius), typeof(Modal), new PropertyMetadata(new CornerRadius(7)));
+
+
 
 
 

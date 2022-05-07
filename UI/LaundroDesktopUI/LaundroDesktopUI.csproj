@@ -14,14 +14,34 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\arrow-left.png" />
     <None Remove="Assets\Images\bin.png" />
+    <None Remove="Assets\Images\blue-analytics.png" />
+    <None Remove="Assets\Images\blue-cash-register.png" />
+    <None Remove="Assets\Images\blue-close.png" />
+    <None Remove="Assets\Images\blue-logout.png" />
+    <None Remove="Assets\Images\blue-money-bill-wave.png" />
+    <None Remove="Assets\Images\blue-package.png" />
+    <None Remove="Assets\Images\blue-settings.png" />
     <None Remove="Assets\Images\cashapp.png" />
     <None Remove="Assets\Images\close.png" />
     <None Remove="Assets\Images\credit-card.png" />
     <None Remove="Assets\Images\edit.png" />
+    <None Remove="Assets\Images\image.png" />
+    <None Remove="Assets\Images\info.png" />
+    <None Remove="Assets\Images\lock.png" />
     <None Remove="Assets\Images\menuBurger.png" />
     <None Remove="Assets\Images\plus.png" />
+    <None Remove="Assets\Images\refresh.png" />
     <None Remove="Assets\Images\test.jpg" />
+    <None Remove="Assets\Images\user.png" />
+    <None Remove="Assets\Images\white-analytics.png" />
+    <None Remove="Assets\Images\white-cash-register.png" />
+    <None Remove="Assets\Images\white-credit-card.png" />
+    <None Remove="Assets\Images\white-logout.png" />
+    <None Remove="Assets\Images\white-money-bill-wave.png" />
+    <None Remove="Assets\Images\white-package.png" />
+    <None Remove="Assets\Images\white-settings.png" />
     <None Remove="Fonts\Poppins-Black.ttf" />
     <None Remove="Fonts\Poppins-BlackItalic.ttf" />
     <None Remove="Fonts\Poppins-Bold.ttf" />
@@ -43,6 +63,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\blue-close.png" />
+    <Resource Include="Assets\Images\image.png" />
+    <Resource Include="Assets\Images\lock.png" />
+    <Resource Include="Assets\Images\refresh.png" />
+    <Resource Include="Assets\Images\user.png" />
+    <Resource Include="Assets\Images\white-analytics.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
@@ -51,14 +80,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\arrow-left.png" />
     <Resource Include="Assets\Images\bin.png" />
+    <Resource Include="Assets\Images\blue-analytics.png" />
+    <Resource Include="Assets\Images\blue-cash-register.png" />
+    <Resource Include="Assets\Images\blue-logout.png" />
+    <Resource Include="Assets\Images\blue-money-bill-wave.png" />
+    <Resource Include="Assets\Images\blue-package.png" />
+    <Resource Include="Assets\Images\blue-settings.png" />
     <Resource Include="Assets\Images\cashapp.png" />
     <Resource Include="Assets\Images\credit-card.png" />
     <Resource Include="Assets\Images\edit.png" />
     <Resource Include="Assets\Images\close.png" />
+    <Resource Include="Assets\Images\info.png" />
     <Resource Include="Assets\Images\menuBurger.png" />
     <Resource Include="Assets\Images\plus.png" />
     <Resource Include="Assets\Images\test.jpg" />
+    <Resource Include="Assets\Images\white-cash-register.png" />
+    <Resource Include="Assets\Images\white-credit-card.png" />
+    <Resource Include="Assets\Images\white-logout.png" />
+    <Resource Include="Assets\Images\white-money-bill-wave.png" />
+    <Resource Include="Assets\Images\white-package.png" />
+    <Resource Include="Assets\Images\white-settings.png" />
     <Resource Include="Fonts\Poppins-Black.ttf" />
     <Resource Include="Fonts\Poppins-BlackItalic.ttf" />
     <Resource Include="Fonts\Poppins-Bold.ttf" />

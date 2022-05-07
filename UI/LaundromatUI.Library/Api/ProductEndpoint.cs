@@ -30,5 +30,13 @@ namespace LaundroDesktopUI.Library.Api
                 }
             }
         }
+
+        public async Task Post(ProductModel product)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync<ProductModel>("/api/Products", product))
+            {
+                response.EnsureSuccessStatusCode();
+            }
+        }
     }
 }

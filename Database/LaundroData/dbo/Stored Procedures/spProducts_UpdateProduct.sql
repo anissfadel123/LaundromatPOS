@@ -1,14 +1,15 @@
 ﻿CREATE PROCEDURE [dbo].[spProducts_UpdateProduct]
 	@Id int,
-	@ProductName nvarchar(50),
+	@ProductDescription nvarchar(50),
 	@Price money,
 	@Barcode nvarchar(30),
 	@IsTaxable bit,
-	@TaxRate decimal(5,2)
+	@TaxRate decimal(5,2),
+	@ImageLocation nvarchar(max)
 AS
 BEGIN
 	SET NOCOUNT ON;
 	UPDATE Products
-	SET ProductName = @ProductName, Price = @Price, Barcode = @Barcode, IsTaxable = @IsTaxable, TaxRate = @TaxRate
+	SET ProductDescription = @ProductDescription, Price = @Price, Barcode = @Barcode, IsTaxable = @IsTaxable, TaxRate = @TaxRate
 	WHERE Id = @Id;
 END

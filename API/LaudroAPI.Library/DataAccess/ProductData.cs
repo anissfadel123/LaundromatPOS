@@ -29,7 +29,15 @@ namespace LaundroAPI.Library.DataAccess
             var output = await sql.LoadDataAsync<ProductDto, dynamic>("dbo.spProducts_GetProduct",
                 new { Id = id }, "LaundroData");
             return output.FirstOrDefault();
-        }
+        }        
+        //public async Task<ProductDto> GetProductByBarcodeAsync(string barcode)
+        //{
+        //    SqlDataAccess sql = new SqlDataAccess(_config);
+        //    var output = await sql.LoadDataAsync<ProductDto, dynamic>("dbo.spProducts_GetProductByBarcode",
+        //        new { Barcode = barcode }, "LaundroData");
+        //    return output.FirstOrDefault();
+        //}
+        
         public async Task DeleteProductAsync(int id)
         {
             SqlDataAccess sql = new SqlDataAccess(_config);

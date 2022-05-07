@@ -10,5 +10,6 @@ namespace LaundroDesktopUI.Library.Api
     public interface IProductEndpoint
     {
         Task<IEnumerable<ProductModel>> GetAll();
+        Task Post(ProductModel product);
     }
 }

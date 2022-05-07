@@ -7,4 +7,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_CustomerInvoiceItems_ToProduct]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="8ceca8e7-44f0-4956-8b29-d3110af162cd" ChangeDateTime="05/01/2022 15:46:08">
+    <Property Name="ElementName" Value="[dbo].[Wdf].[Paid]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Wdf]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsPaid" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f7d24eac-3a7e-4c35-9df9-8966dd4b6920" ChangeDateTime="05/01/2022 15:46:15">
+    <Property Name="ElementName" Value="[dbo].[Wdf].[PickedUp]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Wdf]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsPickedUp" />
+  </Operation>
 </Operations>

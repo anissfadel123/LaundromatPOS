@@ -11,7 +11,7 @@
         Title="MainWindow" 
         Height="918" 
         Width="1632" 
-        MouseDown="Window_MouseDown"
+        
         FontFamily="{StaticResource Poppins}"
         Foreground="#707070" 
         
@@ -20,34 +20,66 @@
         ResizeMode="CanResizeWithGrip"
         
         >
+    <!--MouseDown="Window_MouseDown"-->
     <!--MouseDoubleClick="Window_MouseDoubleClick"-->
     <Window.Resources>
 
     </Window.Resources>
     <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:NewSaleViewModel}">
+                <view:NewSaleView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CleanViewModel}">
+                <view:CleanView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ReadyViewModel}">
+                <view:ReadyView />
+            </DataTemplate>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         
+        <!--// SideBar Menu // -->
+        <view:SideBarView x:Name="SideBarMenu"
+                          Panel.ZIndex="1"
+                          Grid.RowSpan="2"
+                          DataContext="{Binding SideBarVM}"/>
+
 
         <!--// Payment Method popup //-->
-        
-        <custom:Modal x:Name="PaymentModel" 
+
+        <custom:Modal x:Name="PaymentModal"
+                      DataContext="{Binding PaymentSelectionVM}"
                       Panel.ZIndex="1" 
                       Grid.RowSpan="2"
                       ModalHeight="242"
-                      ModalWidth="224">
+                      ModalWidth="224"
+                      IsOpen="{Binding IsOpen}">
             <Grid>
-                <Border VerticalAlignment="Top"
-                        HorizontalAlignment="Right" 
-                        Margin="0 10 10 0"
-                        Cursor="Hand">
-                    <Image  Width="13"
-                            Height="13"
-                            Source="{StaticResource Close}" MouseLeftButtonUp="Image_MouseLeftButtonUp" >
-                    </Image>
-                </Border>
+                <Button x:Name="closeBtn" 
+                        Command="{Binding DataContext.OpenOrCloseModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+                        CommandParameter="{Binding DataContext.PaymentSelectionVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+                        VerticalAlignment="Top">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Image  Width="13"
+                                            Height="13"
+                                            Source="{StaticResource Close}" 
+                                            HorizontalAlignment="Right"
+                                            Margin="0 10 10 20"
+                                            Cursor="Hand"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
                 <StackPanel VerticalAlignment="Bottom">
                     <TextBlock Text="Payment Method" 
@@ -60,12 +92,11 @@
                             Width="178"
                             Height="55"
                             Background="#00672D"
-                            Click="CashBtn_Click">
+                            Command="{Binding DataContext.CloseCurrentOpenNewModal, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+                            CommandParameter="{Binding DataContext.CashInputVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"/>
-                                <!--<Setter Property="BorderBrush" Value="#707070"/>
-                        <Setter Property="BorderThickness" Value="1"/>-->
                             </Style>
                         </Button.Resources>
                         <StackPanel VerticalAlignment="Center"
@@ -107,97 +138,150 @@
             </Grid>
 
         </custom:Modal>
+        
+        <!--// Edit Item Modal // -->
+        <view:EditItemView x:Name="editItemView" 
+                            Panel.ZIndex="1" 
+                            Grid.RowSpan="2" 
+                           DataContext="{Binding EditItemVM}"
+                           Visibility="Visible"/>
 
-        <!--// Register Customer Popup //-->
+        <!--// Register Customer Modal //-->
         
         <view:RegisterCustomerView x:Name="registerCustomerView" 
                                    Panel.ZIndex="1" 
-                                   Grid.RowSpan="2" />
+                                   Grid.RowSpan="2" 
+                                   DataContext="{Binding RegisterCustomerVM}"/>
         
-        <!--// CashInput Popup // -->
+        <!--// CashInput Modal // -->
         <view:CashInputView x:Name="cashInputView" 
                             Panel.ZIndex="1" 
-                            Grid.RowSpan="2" />
+                            Grid.RowSpan="2" 
+                            DataContext="{Binding CashInputVM}"/>
+        
+        <!--// Cancel Customer Transaction Modal //-->
+        <view:CancelView x:Name="cancelTransaction"
+                         Panel.ZIndex="1"
+                         Grid.RowSpan="2"
+                         DataContext="{Binding CancelVM}"/>
+        
+        <!--// Insert Customer Modal //-->
+        <view:SelectCustomerView x:Name="selectCustomerView"
+                         Panel.ZIndex="1"
+                         Grid.RowSpan="2"
+                         DataContext="{Binding SelectCustomerVM}" />
+        
+        <!--// Add New Product Modal //-->
+        <view:AddNewProductView x:Name="addNewProductView"
+                                Panel.ZIndex="1"
+                                Grid.RowSpan="2"
+                                DataContext="{Binding AddNewProductVM}"/>
 
-
+        <!--// Navbar //-->
 
         <Border BorderBrush="#707070" 
                 BorderThickness="1" 
                 Background="#C8F0FF"
-                Padding="24 0 0 0">
+                Padding="24 0 0 0"
+                Grid.Row="0">
             <Grid>
                 <Grid.Resources>
-                    <Style x:Key="navbar_btn"
-                           TargetType="ToggleButton">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ToggleButton">
-                                    <Border>
-                                        <TextBlock Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   Foreground="#707070"
-                                                   FontSize="22"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
 
                     <Style x:Key="register_btn_style"
                            TargetType="Button">
+
+                        <Setter Property="Background" Value="#264CE2"/>
+                        <Setter Property="FontSize" Value="26"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderBrush" Value="#707070"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Width" Value="311"/>
+                                <Setter Property="Height" Value="46"/>
+                                <Setter Property="CornerRadius" Value="22"/>
+                            </Style>
+                        </Style.Resources>
+                        
+                    </Style>
+                    
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Cursor="Hand" Command="{Binding  OpenOrCloseModal}" CommandParameter="{Binding SideBarVM}">
+                    <Button.Style>
+                    <Style TargetType="Button">
                         <Setter Property="Template">
                             <Setter.Value>
-                                <ControlTemplate>
-                                    <Border BorderBrush="#707070"
-                                            BorderThickness="1"
-                                            Background="#264CE2"
-                                            Width="311"
-                                            Height="46"
-                                            CornerRadius="22">
-                                        <TextBlock Foreground="White"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="26"
-                                                   Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-
-                                    </Border>
+                                <ControlTemplate TargetType="Button">
+                                    <Image Width="27" 
+                                           Height="18" 
+                                           Source="{StaticResource MenuBurger}" 
+                                           HorizontalAlignment="Left" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        
                     </Style>
-                </Grid.Resources>
-                <Image  Width="27" 
-                        Height="18" 
-                        Source="{StaticResource MenuBurger}" 
-                        HorizontalAlignment="Left" />
-                <StackPanel Height="31" 
-                            Width="469" 
-                            Orientation="Horizontal"  
-                            HorizontalAlignment="Left" 
-                            Margin="574 0 0 0">
-                    <ToggleButton 
-                        Style="{StaticResource navbar_btn}" 
-                        Content="New Sale" 
-                        FontWeight="SemiBold"/>
-                    <ToggleButton Style="{StaticResource navbar_btn}" 
-                                  Content="Clean" 
-                                  Margin="50 0 0 0"/>
-                    <ToggleButton Style="{StaticResource navbar_btn}" 
-                                  Content="Ready" 
-                                  Margin="50 0 0 0"/>
-                    <ToggleButton Style="{StaticResource navbar_btn}" 
-                                  Content="Pickups" 
-                                  Margin="50 0 0 0"/>
-                </StackPanel>
+                    </Button.Style>
+
+                </Button>
+
+
+                <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.Resources>
+                        <Style TargetType="RadioButton">
+                            <Setter Property="Margin" Value="50 0 0 0" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="FontSize" Value="22" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <TextBlock Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Foreground="#707070"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0" Content="New Sale" Command="{Binding NewSaleCommand}" IsChecked="True"/>
+                    <RadioButton Grid.Column="1" Content="Clean"  Command="{Binding CleanCommand}" CommandParameter="{Binding CleanVM}"/>
+                    <RadioButton Grid.Column="2" Content="Ready" Command="{Binding ReadyCommand}" CommandParameter="{Binding ReadyVM}" />
+                    <RadioButton Grid.Column="3" Content="Pickups"  />
+                </Grid>
+                
                 <Button x:Name="RegisterBtn" 
+                        Grid.Column="2"
                         Content="Register Customer" 
                         Style="{StaticResource register_btn_style}" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Center"
-                        Margin="0 0 63 0" Click="RegisterBtn_Click"/>
+                        Margin="0 0 63 0" 
+                        Command="{Binding OpenOrCloseModal}" 
+                        CommandParameter="{Binding Path=DataContext, ElementName=registerCustomerView}"
+                        Cursor="Hand"/>
             </Grid>
         </Border>
-        <view:NewSaleView x:Name="NewSaleView" Grid.Row="1" DataContext="{Binding CurrentViewModel}" />
+        <!--<view:NewSaleView x:Name="NewSaleView" Grid.Row="1" DataContext="{Binding CurrentViewModel}" />-->
+        <!--<view:CleanView x:Name="CleanView" Grid.Row="1" DataContext="{Binding CurrentViewModel}"/>-->
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
+        
+        <view:LoginView Grid.Row="0" Grid.RowSpan="2" DataContext="{Binding LogInVM}" Panel.ZIndex="1"/>
     </Grid>
 
 </Window>

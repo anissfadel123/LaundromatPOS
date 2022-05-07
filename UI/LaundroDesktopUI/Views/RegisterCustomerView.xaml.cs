@@ -25,9 +25,5 @@ namespace LaundroDesktopUI.Views
             InitializeComponent();
         }
 
-        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            RegisterModal.IsOpen = false;
-        }
     }
 }
