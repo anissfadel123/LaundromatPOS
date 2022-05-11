@@ -1,0 +1,178 @@
+#clean-container {
+  padding:25px 65px;
+  height: 909px;
+  width: 1790px;
+}
+#filter-container {
+  position: relative;
+
+}
+#filter-service {
+  position: absolute;
+  width: 884px;
+  height: 37px;
+  border: 1px solid #707070;
+  border-radius: 7px;
+  padding-inline-start: 53px;
+  font-size: 15px;
+}
+
+/* :-ms-input-placeholder {
+  font-style: italic;
+}
+
+::-webkit-input-placeholder{
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  font-style: italic;
+} */
+
+::placeholder {
+  font-style: italic;
+}
+
+#filter-img {
+  position: absolute;
+  margin-left: 16.5px;
+  margin-top: 11.17px;
+}
+
+#wdf-div {
+  position:absolute;
+  margin-top: 51px;
+  height: 909px;
+  display: flex;
+}
+
+.wdf-container {
+  border: 1px solid black;
+  border-radius: 24px;
+  background-color: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.30);
+}
+
+#to-do {
+  width: 325px;
+  height: 100%;
+}
+
+#wdf {
+  width: 1030px;
+  height: 100%;
+  margin-left: 54px;
+  margin-right: 54px;
+}
+
+#complete {
+  width: 325px;
+  height: 100%;
+}
+
+.card-list-container {
+  height: 800px;
+  overflow-y: auto;
+}
+
+.card {
+  margin-left: 47.5px;
+  margin-bottom: 10px;
+  width: 224px;
+  height: 151px;
+  border: 1px solid #707070;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.29);
+  background-color: #F5F5F5;
+  padding: 5px;
+  position: relative;
+}
+
+.wdf-title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.wdf-category {
+  display:inline-block;
+  width: 33.33%;
+}
+
+.card-header {
+  margin-top: 5px;
+  display: flex;
+  width: 100%;
+}
+
+.card-header-id {
+  margin: 0px;
+  display: inline;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#info-img {
+  margin-left: auto;
+  float: right;
+}
+
+.card-name {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.card-datetime {
+  display: inline;
+  font-size: 15px;
+  font-weight: 300;
+  margin-right: 45px;
+}
+
+.card-price {
+  display: inline;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.date-price-container {
+  position:absolute;
+  bottom: 0px;
+}
+
+#wash-btn-container {
+  display: flex;
+  margin-bottom: 5px;
+}
+.wdf-btn {
+  margin: auto;
+  color: white;
+  width: 86px;
+  height: 25px;
+  border: 1px solid #707070;
+  border-radius: 31px;
+
+}
+#wash-btn {
+  background-color: #264CE2;
+}
+
+#dry-btn {
+  background-color: #2DC20F;
+}
+
+#fold-btn {
+  background-color: #D51A13;
+}
+
+#ready-btn {
+  background-color: #13D58F;
+}
+
+#arrow-img{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin-top: 5px;
+}

@@ -11,8 +11,6 @@
     <custom:Modal ModalWidth="390" ModalHeight="487" IsOpen="{Binding IsOpen}">
         <StackPanel>
             <StackPanel.Resources>
-
-
                 <Style TargetType="TextBox">
                     <Setter Property="FontSize" Value="17" />
                     <Setter Property="Padding" Value="5" />
@@ -57,7 +55,7 @@
 
                 </StackPanel>
 
-                <TextBox Height="45" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Height="45" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Text="{Binding Price}"/>
                 <TextBlock Text="Barcode" FontSize="18" Margin="0 7 0 0"/>
                 <TextBox Height="45" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Text="{Binding Barcode}"/>
                 <Button Height="41" Background="#C8F0FF" HorizontalContentAlignment="Left" Margin="0 20 0 0" Command="{Binding AddProductImageCommand}">
