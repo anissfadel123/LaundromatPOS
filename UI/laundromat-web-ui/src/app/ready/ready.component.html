@@ -1,0 +1,90 @@
+<div class="main-ready-container">
+  <div id="filter-table-container">
+    <div id="filter-container">
+      <label class="filter-label" name="id_label"  for="id-textfield">ID:</label>
+      <input type="text" id="id-textfield" />
+      <label class="filter-label" name="name_label" id="name-label" for="name-textfield">Name:</label>
+      <input type="text" id="name-textfield" />
+      <input id="filter-btn" type="button" value="Filter" />
+    </div>
+    <div id="table-container">
+        <table id="orders-info-table">
+          <thead>
+            <tr>
+              <th align="left">Orders</th>
+              <th align="left">Paid Orders</th>
+              <th align="left">Unpaid Orders</th>
+              <th align="left">Value</th>
+              <th align="left">Amount Paid</th>
+              <th align="left">Amount Unpaid</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <td>210</td>
+            <td>100</td>
+            <td>110</td>
+            <td>$5,900</td>
+            <td>$2,900</td>
+            <td>256</td>
+          </tbody>
+        </table>
+    </div>
+
+    <button id="refresh-btn">
+      <img src="../../assets/images/refresh.png" />
+    </button>
+  </div>
+  <div id="orders-table-container">
+    <table id="orders-table">
+      <thead>
+        <tr>
+          <th align="left">Order #</th>
+          <th align="left">Customer</th>
+          <th align="left">ID</th>
+          <th align="left">Bags</th>
+          <th align="left">Notes</th>
+          <th align="left">Ready By</th>
+          <th align="left">Paid</th>
+          <th align="left">Total</th>
+          <th align="left">Pick up</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Aniss Fadel</td>
+          <td>192</td>
+          <td>2</td>
+          <td class="td-text-description">Wash Cold
+            Use Bleach
+            Separate Socks
+          </td>
+          <td>Tue, 1/22, 12:30 pm</td>
+          <td>Yes</td>
+          <td>$55</td>
+          <td>
+            <input id="pickup-btn" type="button" value="Pick up"/>
+          </td>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>Aniss Fadel</td>
+          <td>192</td>
+          <td>2</td>
+          <td class="td-text-description">Wash Cold<br>
+            Use Bleach<br>
+            Separate Socks<br>
+          </td>
+          <td>Tue, 1/22, 12:30 pm</td>
+          <td>Yes</td>
+          <td>$55</td>
+          <td>
+            <input id="pickup-btn" type="button" value="Pick up"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

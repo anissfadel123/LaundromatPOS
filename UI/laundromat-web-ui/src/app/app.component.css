@@ -52,3 +52,7 @@ button {
 .active {
   font-weight: 600;
 }
+
+#content-container {
+  width: 1920px;
+}
