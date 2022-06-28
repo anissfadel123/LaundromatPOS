@@ -4,10 +4,12 @@
     <li><a routerLinkActive="active" routerLink="sale">New Sale</a></li>
     <li><a routerLinkActive="active" routerLink="clean">Clean</a></li>
     <li><a routerLinkActive="active" routerLink="ready">Ready</a></li>
-    <li style="margin-right: 0;"><a routerLinkActive="active" routerLink="pickups">Pickups</a></li>
+    <li style="margin-right: 0"><a routerLinkActive="active" routerLink="pickups">Pickups</a></li>
   </ul>
-  <button>Register Customer</button>
+  <button (click)="openRegisterCustomerModal()">Register Customer</button>
 </div>
 <div id="content-container">
-  <router-outlet ></router-outlet>
+  <router-outlet></router-outlet>
 </div>
+
+<app-register-customer-modal [isOpen]="displayRegisterCustomerModal" (closeModalEvent)="closeRegisterCustomerModal()"></app-register-customer-modal>

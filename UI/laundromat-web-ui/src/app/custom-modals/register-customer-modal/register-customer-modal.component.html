@@ -1,0 +1,27 @@
+<div class="modal-container" [ngStyle]="{'display': isOpen ? 'flex' : 'none'}">
+  <div class="modal" id="register-customer-modal">
+    <div id="close-btn-container" (click)="closeModal()">
+      <img class="disable-select" id="close-img" src="../../assets/images/close.svg"/>
+    </div>
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <div id="register-customer-title">Register Customer</div>
+      <label class="form-label" for="firstname-textfield">First Name<span style="color: #DD3B3B">*</span></label>
+      <input class="form-textfield" type="text" id="firstname-textfield" formControlName="firstName"/>
+
+      <label class="form-label" for="lastname-textfield">Last Name<span style="color: #DD3B3B">*</span></label>
+      <input class="form-textfield" type="text" id="lastname-textfield" formControlName="lastName"/>
+
+      <label class="form-label" for="phone-textfield">Phone<span style="color: #DD3B3B">*</span></label>
+      <input class="form-textfield" type="text" id="phone-textfield" formControlName="phone"/>
+
+      <label class="form-label" for="email-textfield">Email</label>
+      <input class="form-textfield" type="text" id="email-textfield" formControlName="email"/>
+
+      <label class="form-label" for="address-textfield">Address</label>
+      <input class="form-textfield" type="text" id="address-textfield" formControlName="address"/>
+
+      <input type="submit" id="submit" />
+    </form>
+  </div>
+
+</div>

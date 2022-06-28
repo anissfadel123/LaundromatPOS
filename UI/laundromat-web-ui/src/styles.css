@@ -7,3 +7,50 @@
 body{
   margin: 0;
 }
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+button {
+  border: 1px solid #707070;
+  cursor: pointer;
+}
+
+input[type=button]{
+  cursor: pointer;
+}
+
+.modal-container {
+  z-index: 1;
+  position: fixed;
+  background-color: rgba(0,0,0, 0.7);
+  top: 0;
+  left:0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+
+.modal {
+  background-color: white;
+  border-radius: 7px;
+}
+
+#close-btn-container {
+  display: flex;
+}
+#close-img {
+  padding: 2px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: auto;
+  cursor: pointer;
+}

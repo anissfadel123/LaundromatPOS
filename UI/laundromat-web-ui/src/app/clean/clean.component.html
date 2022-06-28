@@ -9,115 +9,99 @@
     <div class="wdf-container" id="to-do">
       <h1 class="wdf-title">To Do</h1>
       <div class="card-list-container">
-
-          <div class="card">
-              <div class="card-header">
-                <h2 class="card-header-id"># 425</h2>
-                <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
-              </div>
-              <h2 class="card-name">Aniss Fadel</h2>
-              <div class="bottom">
-                <div class="date-price-container">
-                  <h3 class="card-datetime">Mon, 1/22/ 4:00pm</h3>
-                  <h3 class="card-price">$15.00</h3>
-                  <div id="wash-btn-container">
-                    <input class="wdf-btn" id="wash-btn" type="button" value="wash">
-                  </div>
-                </div>
-              </div>
+      <div *ngFor="let wdf of WDFs">
+        <div class="card disable-select" *ngIf="wdf.status == 0">
+          <div class="card-header">
+            <h2 class="card-header-id"># {{wdf.id}}</h2>
+            <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
           </div>
-      </div>
-    </div>
-
-    <div class="wdf-container" id="wdf">
-      <div class="wdf-category">
-        <h1 class="wdf-title">Wash</h1>
-        <div class="card-list-container">
-          <div class="card">
-              <div class="card-header">
-                <h2 class="card-header-id"># 425</h2>
-                <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
+          <h2 class="card-name">{{wdf.firstName}} {{wdf.lastName}}</h2>
+          <div class="bottom">
+            <div class="date-price-container">
+              <h3 class="card-datetime">{{wdf.readyBy |date:'EEE, M/d, h:mm a'}}</h3>
+              <h3 class="card-price">${{wdf.total | number:'.2'}}</h3>
+              <div id="wash-btn-container">
+                <input class="wdf-btn" id="wash-btn" type="button" value="wash" (click)="onIncrementStatus(wdf)">
               </div>
-              <h2 class="card-name">Aniss Fadel</h2>
-              <div class="bottom">
-                <div class="date-price-container">
-                  <h3 class="card-datetime">Mon, 1/22/ 4:00pm</h3>
-                  <h3 class="card-price">$15.00</h3>
-                  <div id="wash-btn-container">
-                      <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" />
-                      <input class="wdf-btn" id="dry-btn" type="button" value="Dry">
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
-      </div>
-    </div>
+        </div>
 
+  </div>
 
-    <div class="wdf-category">
-      <h1 class="wdf-title">Dry</h1>
-        <div class="card-list-container">
-          <div class="card">
+  </div>
+</div>
+
+<div class="wdf-container" id="wdf">
+  <div class="wdf-category">
+    <h1 class="wdf-title">Wash</h1>
+    <div class="card-list-container">
+      <div *ngFor="let wdf of WDFs">
+        <div class="card disable-select" *ngIf="wdf.status==1">
             <div class="card-header">
-              <h2 class="card-header-id"># 425</h2>
+              <h2 class="card-header-id"># {{wdf.id}}</h2>
               <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
             </div>
-            <h2 class="card-name">Aniss Fadel</h2>
+            <h2 class="card-name">{{wdf.firstName}} {{wdf.lastName}}</h2>
             <div class="bottom">
               <div class="date-price-container">
-                <h3 class="card-datetime">Mon, 1/22/ 4:00pm</h3>
-                <h3 class="card-price">$15.00</h3>
+                <h3 class="card-datetime">{{wdf.readyBy |date:'EEE, M/d, h:mm a'}}</h3>
+                <h3 class="card-price">${{wdf.total | number:'.2'}}</h3>
                 <div id="wash-btn-container">
-                  <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" />
-                  <input class="wdf-btn" id="fold-btn" type="button" value="Fold">
+                    <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" (click)="onDecrementStatus(wdf)"/>
+                    <input class="wdf-btn" id="dry-btn" type="button" value="Dry" (click)="onIncrementStatus(wdf)">
                 </div>
               </div>
             </div>
         </div>
       </div>
-    </div>
+  </div>
+</div>
 
-    <div class="wdf-category">
-      <h1 class="wdf-title">Fold</h1>
-        <div class="card-list-container">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-header-id"># 425</h2>
-              <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
-            </div>
-            <h2 class="card-name">Aniss Fadel</h2>
-            <div class="bottom">
-              <div class="date-price-container">
-                <h3 class="card-datetime">Mon, 1/22/ 4:00pm</h3>
-                <h3 class="card-price">$15.00</h3>
-                <div id="wash-btn-container">
-                  <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" />
-                  <input class="wdf-btn" id="ready-btn" type="button" value="Ready">
-                </div>
+
+<div class="wdf-category">
+  <h1 class="wdf-title">Dry</h1>
+    <div class="card-list-container">
+      <div *ngFor="let wdf of WDFs">
+        <div class="card disable-select" *ngIf="wdf.status == 2">
+          <div class="card-header">
+            <h2 class="card-header-id"># {{wdf.id}}</h2>
+            <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
+          </div>
+          <h2 class="card-name">{{wdf.firstName}} {{wdf.lastName}}</h2>
+          <div class="bottom">
+            <div class="date-price-container">
+              <h3 class="card-datetime">{{wdf.readyBy |date:'EEE, M/d, h:mm a'}}</h3>
+              <h3 class="card-price">${{wdf.total | number:'.2'}}</h3>
+              <div id="wash-btn-container">
+                <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" (click)="onDecrementStatus(wdf)"/>
+                <input class="wdf-btn" id="fold-btn" type="button" value="Fold" (click)="onIncrementStatus(wdf)">
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="wdf-category">
+    <h1 class="wdf-title">Fold</h1>
 
-    <div class="wdf-container" id="complete">
-      <h1 class="wdf-title">Completed Today</h1>
       <div class="card-list-container">
-        <div class="card-list-container">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-header-id"># 425</h2>
-              <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
-            </div>
-            <h2 class="card-name">Aniss Fadel</h2>
-            <div class="bottom">
-              <div class="date-price-container">
-                <h3 class="card-datetime">Mon, 1/22/ 4:00pm</h3>
-                <h3 class="card-price">$15.00</h3>
-                <div id="wash-btn-container">
-                </div>
+        <div *ngFor="let wdf of WDFs">
+        <div class="card disable-select" *ngIf="wdf.status==3">
+          <div class="card-header">
+            <h2 class="card-header-id"># {{wdf.id}}</h2>
+            <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
+          </div>
+          <h2 class="card-name">{{wdf.firstName}} {{wdf.lastName}}</h2>
+          <div class="bottom">
+            <div class="date-price-container">
+              <h3 class="card-datetime">{{wdf.readyBy |date:'EEE, M/d, h:mm a'}}</h3>
+              <h3 class="card-price">${{wdf.total | number:'.2'}}</h3>
+              <div id="wash-btn-container">
+                <input id="arrow-img" type="image" src="../../assets/images/arrow-left.png" (click)="onDecrementStatus(wdf)" />
+                <input class="wdf-btn" id="ready-btn" type="button" value="Ready" (click)="onIncrementStatus(wdf)">
               </div>
             </div>
           </div>
@@ -127,4 +111,27 @@
   </div>
 </div>
 
+
+    <div class="wdf-container" id="complete">
+      <h1 class="wdf-title">Completed Today</h1>
+      <div class="card-list-container">
+        <div *ngFor="let wdf of WDFs">
+          <div class="card disable-select" *ngIf="wdf.status==4">
+            <div class="card-header">
+              <h2 class="card-header-id"># {{wdf.id}}</h2>
+              <img id="info-img" src="../../assets/images/info.png" width="25px" height="25px" />
+            </div>
+            <h2 class="card-name">{{wdf.firstName}} {{wdf.lastName}}</h2>
+            <div class="bottom">
+              <div class="date-price-container">
+                <h3 class="card-datetime">{{wdf.readyBy |date:'EEE, M/d, h:mm a'}}</h3>
+                <h3 class="card-price">${{wdf.total | number:'.2'}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
 

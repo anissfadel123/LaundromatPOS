@@ -1,0 +1,21 @@
+<div class="modal-container" [ngStyle]="{'display': isOpen ? 'flex' : 'none'}">
+  <div class="modal" id="add-new-product-modal">
+    <div id="close-btn-container" (click)="closeModal()">
+      <img class="disable-select" id="close-img" src="../../assets/images/close.svg"/>
+    </div>
+    <form>
+      <div id="add-product-title">Add Product</div>
+      <label class="modal-label" for="product-description">Product Description</label>
+      <input class="modal-textfield" id="product-description" type="text"/>
+      <label class="modal-label" for="price">Price</label>
+      <input class="modal-textfield" id="price" type="text"/>
+      <label class="modal-label" for="barcode">Barcode</label>
+      <input class="modal-textfield"  id="barcode" type="text"/>
+      <button id="add-img-btn">
+        <img src="../../../assets/images/image.svg">
+        Add Image
+      </button>
+      <input id="submit-btn" type="button" value="Submit" autocomplete="off">
+    </form>
+  </div>
+</div>

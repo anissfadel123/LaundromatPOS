@@ -17,12 +17,14 @@
 <div id="products-main-container">
   <input type="search" id="search-product" placeholder="Filter product search"/>
   <img id="search-img" src="../../../assets/images/search.png" width="17.5px" height="17.5px" />
+  <input id="add-btn" type="button" value="+" (click)="openAddProductModal()"/>
   <div id="products-container">
-      <div class="product-card">
-        <p id="product-title">Tide detergent 2.72L oz</p>
-        <img id="product-img" src="../../../assets/images/NoPath - Copy (2).png" />
-        <p id="product-price">$10.00</p>
+      <div class="product-card disable-select" *ngFor="let p of retailProducts" (click)="addProductToInvoice(p)">
+        <p id="product-title">{{p.productDescription}}</p>
+        <img id="product-img" src="../../../assets/images/NoPath - Copy (2).png" draggable="false" />
+        <p id="product-price">${{p.price | number: '.2'}}</p>
       </div>
   </div>
 </div>
 
+<app-add-new-product-modal [isOpen]="displayAddProductModal" (closeModalEvent)="closeAddProductModal()"></app-add-new-product-modal>

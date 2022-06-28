@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Laundromat POS';
+  displayRegisterCustomerModal = false;
+
+  closeRegisterCustomerModal(){
+    this.displayRegisterCustomerModal = false;
+  }
+
+  openRegisterCustomerModal(){
+    this.displayRegisterCustomerModal = true;
+  }
 }

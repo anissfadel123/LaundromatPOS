@@ -14,7 +14,7 @@ namespace LaundroAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class WdfController : ControllerBase
     {
         private readonly IConfiguration _config;

@@ -1,0 +1,43 @@
+#register-customer-modal {
+  width: 390px;
+  height: 554px;
+}
+
+#register-customer-title {
+  font-size:  22px;
+  text-align: center;
+  font-weight: 600;
+  color: black;
+  margin: 20px 0px;
+}
+
+.form-label {
+  display: block;
+  color: black;
+  font-size: 18px;
+}
+
+form {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.form-textfield {
+  font-size: 17px;
+  width: 97.5%;
+  height: 40px;
+  border: 1px solid #707070;
+}
+
+#submit {
+  margin-top: 24px;
+  float: right;
+  width: 119px;
+  height: 46px;
+  border-radius: 33px;
+  border: 1px solid #707070;
+  font-size: 21px;
+  color: white;
+  background-color: #0051DE;
+  cursor: pointer;
+}

@@ -1,0 +1,39 @@
+<div class="modal-container" [ngStyle]="{'display': isOpen ? 'flex' : 'none'}">
+  <div class="modal" id="cash-calculator-modal">
+    <div id="close-btn-container" (click)="closeModal()">
+      <img class="disable-select" id="close-img" src="../../assets/images/close.svg"/>
+    </div>
+    <div id="cash-cal-title">
+      Cash Amount
+      <div id="cash-modal-content">
+        <div id="bill-btn-container">
+          <input type="button" class="bill-btn" value="+10" (click)="incrementAmount(10)"/>
+          <input type="button" class="bill-btn" value="+20" (click)="incrementAmount(20)"/>
+          <input type="button" class="bill-btn" value="+50" (click)="incrementAmount(50)"/>
+          <input type="button" class="bill-btn" value="+100" style="margin-bottom: 0px;" (click)="incrementAmount(100)"/>
+        </div>
+        <div id="calculator-container">
+          <input id="cal-textfield" type="text" readonly [(ngModel)]="cashAmount"/>
+          <div class="cal-btn-grid">
+            <input class="cal-btn" type="button" value="7" (click)="cancatAmount('7')"/>
+            <input class="cal-btn" type="button" value="8" (click)="cancatAmount('8')" />
+            <input class="cal-btn" type="button" value="9" (click)="cancatAmount('9')"/>
+            <input class="cal-btn" type="button" value="4" (click)="cancatAmount('4')"/>
+            <input class="cal-btn" type="button" value="5" (click)="cancatAmount('5')"/>
+            <input class="cal-btn" type="button" value="6" (click)="cancatAmount('6')"/>
+            <input class="cal-btn" type="button" value="1" (click)="cancatAmount('1')"/>
+            <input class="cal-btn" type="button" value="2" (click)="cancatAmount('2')"/>
+            <input class="cal-btn" type="button" value="3" (click)="cancatAmount('3')"/>
+            <input class="cal-btn" type="button" value="." (click)="cancatAmount('.')"/>
+            <input class="cal-btn" type="button" value="0" (click)="cancatAmount('0')"/>
+            <input class="cal-btn" type="button" value="C" (click)="clearAmount()"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="total-done-container">
+      Total: ${{total | number:'.2'}}
+      <input id="done-btn" type="button" value="Done" />
+    </div>
+  </div>
+</div>

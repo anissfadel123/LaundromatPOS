@@ -1,6 +1,6 @@
 <div class="customer-container">
   <input class="barcode" type="text" placeholder="Scan or Enter Barcode" />
-  <input class="select-customer-btn" type="button" value="Select Customer" />
+  <input class="select-customer-btn" type="button" value="Select Customer" (click)="openSelectCustomerModal()"/>
 
   <button class="add-btn">+</button>
 </div>
@@ -9,13 +9,13 @@
     <span class="customer-info-row-1 customer-info-col-1">
       <label class="info-label info-label-col-1">Customer Name: </label>
       <div class="info-container">
-        Aniss Fadel
+        {{customer.getName()}}
       </div>
     </span>
     <span class="customer-info-row-1 customer-info-col-2">
       <label class="info-label info-label-col-2">ID: </label>
       <div class="info-container">
-        12
+        {{customer.id}}
       </div>
     </span>
   </div>
@@ -23,13 +23,13 @@
     <span class="customer-info-row-2 customer-info-col-1">
       <label class="info-label info-label-col-1">Phone number: </label>
       <div class="info-container">
-        1(718)368-1234
+        {{customer.phone}}
       </div>
     </span>
     <span class="customer-info-row-2 customer-info-col-2">
       <label class="info-label info-label-col-2">Points: </label>
       <div class="info-container">
-        200
+        {{customer.points}}
       </div>
     </span>
   </div>
@@ -49,152 +49,87 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td width="90px">2</td>
-        <td width="209px">Chicken</td>
-        <td width="156px">0</td>
-        <td  width="90px">$5.00</td>
-        <td  width="67px">$10.00</td>
-        <td width="42px">
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td width="42px">
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Chicken</td>
-        <td>0</td>
-        <td>$5.00</td>
-        <td>$10.00</td>
-        <td>
-          <a>
-            <img src="../../../assets/images/edit.png" height="17px" width="17px"/>
-          </a>
-        </td>
-        <td>
-          <a>
-            <img src="../../../assets/images/bin.png" height="21px" width="17px"/>
-          </a>
-        </td>
-      </tr>
 
+      <tr *ngFor="let invoiceItem of invoiceItemList">
+        <td width="90px">{{invoiceItem.getQuantity()}}</td>
+        <td width="209px">{{invoiceItem.getProductDescription()}}</td>
+        <td width="156px">{{invoiceItem.getDiscount()}}</td>
+        <td width="90px">${{invoiceItem.getProductPrice() | number:'.2'}}</td>
+        <td width="67px">${{invoiceItem.getAmountWithoutTax() | number:'.2'}}</td>
+        <td width="42px">
+          <a>
+            <img src="../../../assets/images/edit.svg" height="17px" width="17px"/>
+          </a>
+        </td>
+        <td width="42px">
+          <a>
+            <img src="../../../assets/images/bin.svg" height="21px" width="17px" (click)="removeInvoiceItem(invoiceItem)"/>
+          </a>
+        </td>
+      </tr>
     </tbody>
   </table>
   <div class="total-info">
       <div>
         <span style="font-size: 20px;">Sub Total</span>
-        <span style="font-size: 20px; float: right; ">$22.98</span>
+        <span style="font-size: 20px; float: right; ">${{getSubTotal() | number: '.2'}}</span>
       </div>
       <div style="margin-top: 5px;">
         <span style="font-size: 20px;">Tax</span>
-        <span style="font-size: 20px;float: right;">$0.00</span>
+        <span style="font-size: 20px;float: right;">${{getTaxTotal() | number: '.2'}}</span>
       </div>
       <hr>
       <div>
           <span style="font-size: 24px;">Grand Total</span>
-          <span style="font-size: 24px;float: right;">$22.98</span>
+          <span style="font-size: 24px;float: right;">${{getGrandTotal() | number: '.2'}}</span>
       </div>
   </div>
 </div>
 <textarea name="notes" id="notes" cols="" rows="" placeholder="Order Notes:"></textarea>
 
 <div class="btns-container">
-  <input class="main-btn cancel" type="button" value="Cancel">
+  <input class="main-btn cancel" type="button" value="Cancel" (click)="openCancelTransactionModal()">
   <input class="main-btn void" type="button" value="Void">
-  <input class="main-btn continue" type="button" value="Continue">
+  <input class="main-btn continue" type="button" value="Continue" (click)="openPaymentMethodModal()">
 </div>
 
+<div class="modal-container" [ngStyle]="{'display': displayPaymentModal ? 'flex' : 'none'}">
+  <div class="modal" id="payment-method-modal">
+    <div id="close-btn-container" (click)="closePaymentMethodModal()">
+      <img class="disable-select" id="close-img" src="../../assets/images/close.svg"/>
+    </div>
+    <div id="payment-method-content">
+      <div class="modal-title">Payment Method</div>
+      <div>
+        <button class="payment-btn" id="cash-btn" (click)="openCashAmountModal(); closePaymentMethodModal()">
+          Cash
+          <img class="payment-img" src="../../assets/images/cash.svg" />
+        </button>
+      </div>
+      <div>
+        <button class="payment-btn" id="credit-card-btn">
+          Credit Card
+          <img class="payment-img" src="../../assets/images/credit-card.svg"/>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal-container" id="cancel-modal-container" [ngStyle]="{'display': displayCancelTransactionModal ? 'flex': 'none'}">
+  <div class="modal" id="cancel-modal">
+    <div id="cancel-modal-content">
+      <div class="modal-title">Cancel Customer Transaction?</div>
+      <div id="cancel-btn-container">
+        <button class="cancel-modal-btn" id="cancel-no-btn" (click)="closeCancelTransactionModal()">No</button>
+        <button class="cancel-modal-btn" id="cancel-yes-btn" (click)="cancelCustomerTransaction()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [ngStyle]="{'display': displayCashAmountModal? 'flex': 'none'}" -->
 
+<app-cash-input-modal [isOpen]="displayCashAmountModal" (closeModalEvent)="closeCashAmountModal()" [total]="getGrandTotal()"></app-cash-input-modal>
+
+<app-select-customer-modal [isOpen]="displaySelectCustomerModal" (closeModalEvent)="closeSelectCustomerModal()"></app-select-customer-modal>
 

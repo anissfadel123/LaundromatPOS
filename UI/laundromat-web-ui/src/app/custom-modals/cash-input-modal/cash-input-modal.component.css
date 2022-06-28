@@ -1,0 +1,86 @@
+#cash-calculator-modal {
+  width: 527px;
+  height: 530px;
+}
+
+#cash-cal-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.bill-btn {
+  display: block;
+  background-color: white;
+  width: 116px;
+  height: 60px;
+  border: 1px solid #707070;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+  margin-bottom: 21px;
+}
+
+#cash-modal-content {
+  margin: 30px 60px;
+  height: 303px;
+
+}
+
+#bill-btn-container {
+  float: left;
+}
+
+#calculator-container {
+  height: 100%;
+  margin-right: 30px;
+  background-color: #8D8D8D;
+  border: 1px solid #707070;
+  box-shadow: 0px 7px 19px #000000;
+  width: 230px;
+  float: right;
+}
+
+#cal-textfield {
+  width: 93%;
+  height: 34px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: right;
+
+}
+
+.cal-btn-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin:3px;
+  height: 250px;
+}
+
+.cal-btn {
+  font-size: 20px;
+  font-weight: 600;
+  width: 70px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #707070;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+#total-done-container {
+  font-size: 27px;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 50px;
+}
+
+#done-btn {
+  float: right;
+  background-color: #0051DE;
+  width: 151px;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+  border-radius: 33px;
+  border: 1px solid #707070;
+}

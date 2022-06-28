@@ -1,0 +1,692 @@
+<div class="modal-container" [ngStyle]="{'display': isOpen ? 'flex' : 'none'}">
+  <div class="modal" id="register-customer-modal">
+    <div id="close-btn-container" (click)="closeModal()">
+      <img class="disable-select" id="close-img" src="../../assets/images/close.svg"/>
+    </div>
+
+    <div class="modal-title">Select Customer</div>
+    <div class="customer-input-container">
+      <label for="customer-id">ID: </label>
+      <input type="text" id="customer-id" [(ngModel)]='id' />
+      <label for="customer-name">Name: </label>
+      <input type="text" id="customer-name" [(ngModel)]='name' />
+      <button id="filter-btn" (click)="filterCustomer()">Filter</button>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-1" align="left">ID</th>
+            <th class="col-2" align="left">Name</th>
+            <th class="col-3" align="left">Phone</th>
+            <th class="col-4" align="left">Points</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customerList">
+            <td class="col-1" id="id" align="left">{{customer.id}}</td>
+            <td class="col-2" id="name" align="left">{{customer.firstName}} {{customer.lastName}}</td>
+            <td class="col-3" id="phone" align="left">{{customer.phone}}</td>
+            <td class="col-4" id="points" align="left">{{customer.points}}</td>
+            <td class="col-5" align="right">
+              <button id="select" (click)="OnSelectCustomer(customer)">Select</button>
+            </td>
+          </tr>
+
+          <!-- <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="col-1" id="id" align="left">2</td>
+            <td class="col-2" id="name" align="left">Aniss Fadel</td>
+            <td class="col-3" id="phone" align="left">7183689829</td>
+            <td class="col-4" id="points" align="left">200</td>
+            <td class="col-5" align="right">
+              <button id="select" >Select</button>
+            </td>
+          </tr> -->
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
