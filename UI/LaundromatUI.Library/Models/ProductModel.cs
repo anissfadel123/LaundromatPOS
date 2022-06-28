@@ -12,7 +12,7 @@ namespace LaundroDesktopUI.Library.Models
         public string ProductDescription { get; set; }
         public decimal Price { get; set; }
         public string Barcode { get; set; }
-        public Boolean isTaxable { get; set; }
+        public Boolean IsTaxable { get; set; }
         public string ImageLocation { get; set; }
     }
 }

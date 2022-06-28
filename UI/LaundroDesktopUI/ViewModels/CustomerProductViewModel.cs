@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace LaundroDesktopUI.ViewModels
 {
-    public class CustomerProductViewModel :ViewModelBase
+    public class CustomerProductViewModel : ViewModelBase
     {
         private readonly ProductModel _product;
         private decimal _discount = 0;
