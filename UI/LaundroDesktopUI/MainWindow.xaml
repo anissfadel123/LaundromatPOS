@@ -177,6 +177,13 @@
                                 Grid.RowSpan="2"
                                 DataContext="{Binding AddNewProductVM}"/>
 
+        <!--// Print Receipt Modal //-->
+        <view:PrintReceiptView x:Name="printReceiptView"
+                               Panel.ZIndex="1"
+                                Grid.RowSpan="2"
+                               DataContext="{Binding PrintReceiptVM}"
+                               />
+
         <!--// Navbar //-->
 
         <Border BorderBrush="#707070" 

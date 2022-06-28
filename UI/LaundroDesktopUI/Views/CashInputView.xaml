@@ -203,9 +203,9 @@
             <Grid Margin="40 30 40 0">
 
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <TextBlock FontSize="27">Total:</TextBlock>
-                    <TextBox FontSize="27"
-                             IsReadOnly="True">$10.18</TextBox>
+                    <TextBlock FontSize="27">Total: </TextBlock>
+                    <TextBlock FontSize="27" 
+                             Text="{Binding Total, StringFormat='c'}"/> 
 
                 </StackPanel>
                 <Button HorizontalAlignment="Right" 
@@ -214,7 +214,9 @@
                         Height="40"
                         Background="#0051DE"
                         Foreground="White"
-                        FontSize="25">
+                        FontSize="25"
+                        Command="{Binding CloseCurrentOpenPrintReceiptModal}"
+                        CommandParameter="{Binding DataContext.PrintReceiptVM, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="20" />

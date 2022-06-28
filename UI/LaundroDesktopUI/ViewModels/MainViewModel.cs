@@ -27,6 +27,8 @@ namespace LaundroDesktopUI.ViewModels
         public CustomerProductViewModel selectedProductToEdit;
         public AddNewProductViewModel AddNewProductVM { get; }
 
+        public PrintReceiptViewModel PrintReceiptVM { get; }
+
 
 
         public MainViewModel(NewSaleViewModel newSaleViewModel, CleanViewModel cleanViewModel,
@@ -34,7 +36,8 @@ namespace LaundroDesktopUI.ViewModels
             PaymentSelectionViewModal paymentSelectionVM, CancelViewModel cancelView, ReadyViewModel readyVM,
             NavigationStore navigationStore, NavigationService<NewSaleViewModel> newSaleViewNavigationService,
             NavigationService<CleanViewModel> cleanViewNavigationService, NavigationService<ReadyViewModel> readyViewNavigationService,
-            SideBarViewModel sideBarView, SelectCustomerViewModel selectCustomerVM, LoginViewModel logInVM, AddNewProductViewModel addNewProductVM)
+            SideBarViewModel sideBarView, SelectCustomerViewModel selectCustomerVM, LoginViewModel logInVM, 
+            AddNewProductViewModel addNewProductVM, PrintReceiptViewModel printReceiptVM)
         {
             _navigationStore = navigationStore;
             navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
@@ -49,6 +52,7 @@ namespace LaundroDesktopUI.ViewModels
             ReadyVM = readyVM;
             SelectCustomerVM = selectCustomerVM;
             AddNewProductVM = addNewProductVM;
+            PrintReceiptVM = printReceiptVM;
             EditItemVM = new EditItemViewModel(this, newSaleViewModel);
 
             //Cash Register Section

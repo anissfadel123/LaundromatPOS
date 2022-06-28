@@ -70,6 +70,7 @@ namespace LaundroDesktopUI
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<SideBarViewModel>();
             services.AddSingleton<AddNewProductViewModel>();
+            services.AddSingleton<PrintReceiptViewModel>();
             services.AddSingleton<ILoggedInUserModel, LoggedInUserModel>();
             //services.AddSingleton<EditItemViewModel>();
 

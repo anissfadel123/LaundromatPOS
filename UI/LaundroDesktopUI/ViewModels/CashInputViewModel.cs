@@ -12,12 +12,15 @@ namespace LaundroDesktopUI.ViewModels
     {
         private string _cashAmount = "";
         private bool _isOpen = false;
+        private NewSaleViewModel _newSaleVM;
 
-        public CashInputViewModel()
+        public CashInputViewModel(NewSaleViewModel newSaleVM)
         {
             IncrementAmtCommand = new IncrementAmountCommand(this);
             ClearCashAmtCommand = new ClearCashAmountCommand(this);
             InsertAmtCommand = new InsertAmountCommand(this);
+            CloseCurrentOpenPrintReceiptModal = new CloseCurrent_OpenNewModalCommand<CashInputViewModel>(this);
+            _newSaleVM = newSaleVM;
         }
 
         public bool IsOpen 
@@ -26,12 +29,21 @@ namespace LaundroDesktopUI.ViewModels
             set
             {
                 _isOpen = value;
+                if (value)
+                {
+                    CashAmount = "";
+                    OnPropertyChanged(nameof(Total));
+                }
                 OnPropertyChanged(nameof(IsOpen));
+                
             }
         }
+        public decimal Total => _newSaleVM.GrandTotal;
         public ICommand IncrementAmtCommand { get; }
         public ICommand InsertAmtCommand { get; }
         public ICommand ClearCashAmtCommand { get; }
+
+        public ICommand CloseCurrentOpenPrintReceiptModal { get; }
 
         public string CashAmount
         {

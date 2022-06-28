@@ -362,6 +362,13 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Height="35">
+                                            <Grid.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="FontSize" Value="15"/>
+                                                    <Setter Property="FontWeight" Value="Regular"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                </Style>
+                                            </Grid.Resources>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="84*"/>
                                                 <ColumnDefinition Width="209*"/>
@@ -371,13 +378,7 @@
                                                 <ColumnDefinition Width="43*"/>
                                                 <ColumnDefinition Width="43*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontSize" Value="15"/>
-                                                    <Setter Property="FontWeight" Value="Regular"/>
-                                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                                </Style>
-                                            </Grid.Resources>
+
                                             <TextBlock Grid.Column="0" Text="{Binding Quantity}"/>
                                             <TextBlock Grid.Column="1" Text="{Binding ItemInfo}" />
                                             <TextBlock Grid.Column="2" Text="{Binding Discount}"/>
